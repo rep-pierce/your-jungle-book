@@ -6,7 +6,6 @@ import NavBar from "./components/NavBar";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [count, setCount] = useState(0);
 
   useEffect(() => {
 		fetch("/auth").then((r) => {
@@ -15,12 +14,6 @@ function App() {
 			}
 		});
 	}, []);
-
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
 
   return (
     <BrowserRouter>
