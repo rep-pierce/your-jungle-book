@@ -1,8 +1,20 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import LogInPage from "./components/LogInPage";
+import HomePage from "./components/HomePage";
+import NavBar from "./components/NavBar";
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null);
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+		fetch("/auth").then((r) => {
+			if (r.ok) {
+				r.json().then((user) => setCurrentUser(user));
+			}
+		});
+	}, []);
 
   useEffect(() => {
     fetch("/hello")
@@ -13,12 +25,13 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
         <Switch>
-          <Route path="/testing">
-            <h1>Test Route</h1>
+          <Route path="/loginpage">
+            <LogInPage setCurrentUser={setCurrentUser}/>
           </Route>
           <Route path="/">
-            <h1>Page Count: {count}</h1>
+            <HomePage currentUser={currentUser} setCurrentUser={setCurrentUser} />
           </Route>
         </Switch>
       </div>

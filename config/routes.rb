@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
+  resources :posts_plants, only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
+  resources :post_tags, only: [:create, :destroy]
+  resources :tags, only: [:create, :destroy]
+  resources :posts, only: [:index, :create, :show, :destroy, :update]
+  resources :plants, only: [:index, :create, :show, :destroy, :update]
   resources :users, only:[:index, :create, :show, :destroy, :update]
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
-  get '/hello', to: 'application#hello_world'
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+
+  post "/signup", to: "users#create"
+  get "/auth", to: "users#show"
 
   get '*path',
       to: 'fallback#index',
