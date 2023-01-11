@@ -17,6 +17,7 @@ PostsPlant.destroy_all
 User.create(name: "Rep", age: 26, username: "Rep", password: "rep", image: "rep", email: "ryan1@gmail.com")
 User.create(name: "Ryan", age: 25, username: "Ryan", password: "ryan", image: "ryan", email: "ryan2@gmail.com")
 User.create(name: "Red", age: 28, username: "Red", password: "red", image: 'red', email: "ryan3@gmail.com")
+puts "seeded users"
 
 Plant.create(user_id: 1, name: "Plant1", image: "Plant1", watered: true, status: "Watered this last night")
 Plant.create(user_id: 1, name: "Plant2", image: "Plant2", watered: true, status: "Watered this last night")
@@ -29,22 +30,27 @@ Plant.create(user_id: 2, name: "Plant6", image: "Plant6", watered: false, status
 Plant.create(user_id: 3, name: "Plant7", image: "Plant7", watered: true, status: "Watered this this morning")
 Plant.create(user_id: 3, name: "Plant8", image: "Plant8", watered: true, status: "Watered this this morning")
 Plant.create(user_id: 3, name: "Plant9", image: "Plant9", watered: true, status: "Watered this this morning")
+puts "seeded plants"
 
 Post.create(user_id: 1, title: "Post1", image: "Post1", post_body: "Here is the first post")
 Post.create(user_id: 2, title: "Post2", image: "Post2", post_body: "Here is the second post")
 Post.create(user_id: 3, title: "Post3", image: "Post3", post_body: "Here is the third post")
+puts "seeded posts"
 
 Tag.create(name: "Tag1")
 Tag.create(name: "Tag2")
 Tag.create(name: "Tag3")
+puts "seeded tags"
 
 PostTag.create(post_id: 1, tag_id: 1)
 PostTag.create(post_id: 2, tag_id: 2)
 PostTag.create(post_id: 3, tag_id: 3)
+puts "seeded pts"
 
 Comment.create(user_id: 1, post_id: 2, comment: "This is the first comment")
 Comment.create(user_id: 2, post_id: 3, comment: "This is the second comment")
 Comment.create(user_id: 3, post_id: 1, comment: "This is the third comment")
+puts "seeded comments"
 
 Like.create(user_id: 1, post_id: 2)
 Like.create(user_id: 1, post_id: 3)
@@ -54,6 +60,7 @@ Like.create(user_id: 2, post_id: 3)
 
 Like.create(user_id: 3, post_id: 1)
 Like.create(user_id: 3, post_id: 2)
+puts "seeded likes"
 
 PostsPlant.create(post_id: 1, plant_id: 1)
 PostsPlant.create(post_id: 1, plant_id: 2)
@@ -66,5 +73,6 @@ PostsPlant.create(post_id: 2, plant_id: 6)
 PostsPlant.create(post_id: 3, plant_id: 7)
 PostsPlant.create(post_id: 3, plant_id: 8)
 PostsPlant.create(post_id: 3, plant_id: 9)
+puts "seeded pps"
 
 puts "seeding done"
