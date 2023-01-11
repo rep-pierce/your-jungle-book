@@ -24,7 +24,7 @@ function App() {
             <LogInPage setCurrentUser={setCurrentUser}/>
           </Route>
           <Route path="/">
-            <HomePage currentUser={currentUser} setCurrentUser={setCurrentUser} />
+            <HomePage currentUser={currentUser} />
           </Route>
         </Switch>
       </div>

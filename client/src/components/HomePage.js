@@ -1,25 +1,27 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom';
+import React, {useState, useEffect} from 'react'
+import PostCard from './PostCard'
 
-function HomePage({currentUser, setCurrentUser}) {
-    const history = useHistory()
+function HomePage({currentUser}) {
+  const [posts, setPosts] = useState([])
+  useEffect(() => {
+    fetch("/posts")
+    .then(r => r.json())
+    .then(setPosts)
+  }, [])
 
-    function handleNav(){
-      history.push("/loginpage")
-    }
-    function handleClick(){
-      console.log(currentUser)
-    }
-    function handleLogOut(){
-      fetch("/logout", {
-          method: "DELETE",
-      })
-        .then(() => setCurrentUser(null))
-    }
+  function handleClick(){
+    console.log(currentUser)
+  }
+
+  function renderPosts(){
+    return posts.map( post => <PostCard key={post.id} post={post} />)
+  }
+
   return (
     <div>
-        <h1>HomePage</h1>
-        <button onClick={handleClick}>Click</button>
+      <h1>HomePage</h1>
+      {!posts ? null : renderPosts()}
+      <button onClick={handleClick}>Click</button>
     </div>
   )
 }
