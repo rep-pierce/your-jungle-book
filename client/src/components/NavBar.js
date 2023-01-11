@@ -18,6 +18,12 @@ function NavBar({ currentUser, setCurrentUser }) {
 			<NavLink exact to="/">
 				Home
 			</NavLink>
+			{!currentUser ? null :
+			(
+				<NavLink to="/userpage">
+					{" "}Profile{" "}
+				</NavLink>
+			)}
 			{!currentUser ? (
 				<NavLink to="/loginpage">
 					{" "}Log In{" "}
@@ -26,7 +32,7 @@ function NavBar({ currentUser, setCurrentUser }) {
 				<button onClick={handleLogOut}>
 					Log Out
 				</button>
-			)}
+			)}	
 		</div>
 	);
 }

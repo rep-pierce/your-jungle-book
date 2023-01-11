@@ -7,10 +7,10 @@ function PostCard({post}) {
   return (
     <div>
         <h3>{post.title}</h3>
-        <div>{handleTags()}</div>
+        {!post.tags ? null : handleTags()}
         <p>{post.image}</p>
         <p>{post.post_body}</p>
-        <p>Post By: {post.user.username}</p>
+        {!post.user? null : <p>Post By: {post.user.username}</p>}
     </div>
   )
 }
