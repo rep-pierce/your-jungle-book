@@ -9,5 +9,5 @@ cp -a client/build/. public/
 
 # Build commands for back end
 bundle install
-bundle exec rake db:reset
-# bundle exec rake db:seed
+bundle exec rake db:migrate 
+bundle exec rake db:seed
