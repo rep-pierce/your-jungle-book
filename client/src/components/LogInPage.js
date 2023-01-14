@@ -1,9 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import LogInForm from './LogInForm';
 import NewUserForm from './NewUserForm';
 import { useHistory } from 'react-router-dom';
 
-function LogInPage({setCurrentUser}) {
+function LogInPage({
+	setCurrentUser,
+	setUserPosts,
+	setUserComments,
+	setUserLikes,
+	setUserPlants}) {
     const [formData, setFormData] = useState({
 		name: "",
 		age: "",
@@ -53,6 +58,10 @@ function LogInPage({setCurrentUser}) {
 					handleChange={handleChange}
 					setErrors={setErrors}
 					setCurrentUser={setCurrentUser}
+					setUserPosts={setUserPosts}
+					setUserComments={setUserComments}
+					setUserLikes={setUserLikes}
+					setUserPlants={setUserPlants}
                     history={history}
 				/>
 			);

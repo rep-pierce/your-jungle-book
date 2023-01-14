@@ -1,6 +1,11 @@
 import React from 'react';
 
-const NewUserForm = ({ formData, handleChange, setCurrentUser, setErrors, history }) => {
+const NewUserForm = ({ 
+    formData, 
+    handleChange, 
+    setCurrentUser, 
+    setErrors,
+    history }) => {
     
     function handleSubmit(e){
         e.preventDefault();
@@ -20,7 +25,9 @@ const NewUserForm = ({ formData, handleChange, setCurrentUser, setErrors, histor
             body: JSON.stringify(user)
         }).then((r) => {
         if (r.ok) {
-          r.json().then((user) => setCurrentUser(user)).then(history.push("/"))
+          r.json().then((user) => {
+            setCurrentUser(user)
+        }).then(history.push("/"))
         } else {
           r.json().then((err) => setErrors(err.errors));
         }

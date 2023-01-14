@@ -36,11 +36,20 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <NavBar 
+        setUserPosts={setUserPosts}
+        setUserComments={setUserComments}
+        setUserLikes={setUserLikes}
+        setUserPlants={setUserPlants}
         currentUser={currentUser} 
         setCurrentUser={setCurrentUser}/>
         <Switch>
           <Route path="/loginpage">
-            <LogInPage setCurrentUser={setCurrentUser}/>
+            <LogInPage 
+            setCurrentUser={setCurrentUser}
+            setUserPosts={setUserPosts}
+            setUserComments={setUserComments}
+            setUserLikes={setUserLikes}
+            setUserPlants={setUserPlants}/>
           </Route>
           <Route path="/userpage">
             <UserPage 

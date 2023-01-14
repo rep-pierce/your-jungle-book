@@ -6,6 +6,10 @@ function LoginForm({
 	username,
 	password,
 	handleChange,
+	setUserPosts,
+	setUserComments,
+	setUserLikes,
+	setUserPlants,
     history
 }) {
 	function handleSubmit(e) {
@@ -24,7 +28,13 @@ function LoginForm({
 		}).then((r) => {
 			if (r.ok) {
 				r.json()
-					.then((user) => setCurrentUser(user))
+					.then((user) => {
+						setCurrentUser(user)
+						setUserPosts(user.posts)
+          				setUserComments(user.comments)
+          				setUserLikes(user.liked_posts)
+          				setUserPlants(user.plants)
+					})
 					.then(history.push("/"));
 			} else {
 				r.json().then((err) => setErrors(err.errors));

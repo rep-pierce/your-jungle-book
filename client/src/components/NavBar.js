@@ -2,13 +2,25 @@ import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
 
 
-function NavBar({ currentUser, setCurrentUser }) {
+function NavBar({ 
+	setUserPosts,
+	setUserComments,
+	setUserLikes,
+	setUserPlants,
+	currentUser, 
+	setCurrentUser }) {
 	const history = useHistory()
 	function handleLogOut() {
 		fetch("/logout", {
 			method: "DELETE",
 		})
-			.then(() => setCurrentUser(null))
+			.then(() => {
+				setCurrentUser(null)
+				setUserPosts([])
+				setUserComments([])
+				setUserLikes([])
+				setUserPlants([])
+			})
 			.then(history.push('/'));
 	}
 
