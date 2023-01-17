@@ -29,33 +29,33 @@ function PlantForm({formData, handleResets, handleChange, currentUser, setNewPla
         })
     }
     return (
-      <div>
-          <form onSubmit={handleSubmit}>
-                  <div>
-                      <label htmlFor="name">Name:</label>
-                      <input type="text" name="name" value={formData.name} onChange={(e)=> handleChange(e)} />
-                  </div>
-                  <div>
-                      <label htmlFor="image">Image:</label>
-                      <input type="text" name="image" value={formData.image} onChange={(e) => handleChange(e)} />
-                  </div>
-                  <div>
-                      <label htmlFor="watered">Watered:</label>
-                      <select name="watered" onChange={(e) => handleChange(e)}>
-                        <option value="-">-</option>
-                        <option value={true}>true</option>
-                        <option value={false}>false</option>
-                      </select>
-                  </div>
-                  <div>
-                      <label htmlFor="status">Hows Your Plant Doing?</label>
-                      <input type="text" name="status" value={formData.status} onChange={(e) => handleChange(e)} />
-                  </div>
-                  <div>
-                      <input type="submit" />
-                  </div>
-              </form>
-      </div>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="name">Name:</label>
+                    <input type="text" name="name" value={formData.name} onChange={(e)=> handleChange(e)} />
+                </div>
+                <div>
+                    <label htmlFor="image">Image:</label>
+                    <input type="text" name="image" value={formData.image} onChange={(e) => handleChange(e)} />
+                </div>
+                <div>
+                    <label htmlFor="watered">Watered:</label>
+                    <select name="watered" onChange={(e) => handleChange(e)}>
+                      <option value="-">-</option>
+                      <option value={true}>true</option>
+                      <option value={false}>false</option>
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="status">Hows Your Plant Doing?</label>
+                    <input type="text" name="status" value={formData.status} onChange={(e) => handleChange(e)} />
+                </div>
+                <div>
+                    <input type="submit" />
+                </div>
+            </form>
+        </div>
     )
 }
 

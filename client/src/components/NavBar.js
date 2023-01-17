@@ -40,6 +40,12 @@ function NavBar() {
 					{" "}Profile{" "}
 				</NavLink>
 			)}
+			{!currentUser ? null :
+			(
+				<NavLink to="/newpost">
+					{" "}Create Post{" "}
+				</NavLink>
+			)}
 			{!currentUser ? (
 				<NavLink to="/loginpage">
 					{" "}Log In{" "}
@@ -48,7 +54,7 @@ function NavBar() {
 				<button onClick={handleLogOut}>
 					Log Out
 				</button>
-			)}	
+			)}
 		</div>
 	);
 }

@@ -4,6 +4,8 @@ import LogInPage from "./components/LogInPage";
 import HomePage from "./components/HomePage";
 import NavBar from "./components/NavBar";
 import UserPage from "./components/UserPage";
+import NewPostPage from "./components/NewPostPage";
+import PostView from "./components/PostView";
 
 function App() {
 
@@ -16,6 +18,12 @@ function App() {
           </Route>
           <Route path="/userpage">
             <UserPage />
+          </Route>
+          <Route path="/newpost">
+            <NewPostPage />
+          </Route>
+          <Route path="/posts/:id">
+            <PostView />
           </Route>
           <Route path="/">
             <HomePage />
