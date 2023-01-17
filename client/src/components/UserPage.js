@@ -3,6 +3,7 @@ import PostCard from './PostCard'
 import CommentCard from './CommentCard'
 import PlantCard from './PlantCard'
 import { Context } from '../contexts/Context'
+import PlantForm from './PlantForm'
 
 function UserPage() {
     const {
@@ -10,12 +11,46 @@ function UserPage() {
 		userPosts,
 		userComments,
 		userLikes,
-		userPlants
+		userPlants,
+        setUserPlants
 	} = useContext(Context)
+    const [formData, setFormData] = useState({
+        name: "",
+        image: "",
+        watered: null,
+        status: ""
+    })
+    const [errors, setErrors] = useState([]);
     const [display, setDisplay] = useState('posts')
+    const [newPlant, setNewPlant] = useState('no')
+    function handleChange(e) {
+		const value = e.target.value;
+		const name = e.target.name;
+		setFormData((formData) => ({
+			...formData,
+			[name]: value,
+		}));
+	};
+    function handleResets(){
+        setFormData({
+            name: "",
+            image: "",
+            watered: null,
+            status: ""
+        })
+        setErrors([])
+    }
     
     if (!currentUser){
         return <h2>Loading...</h2>
+    }
+    function handleNewPlantForm(){
+        if (newPlant === "yes"){
+            handleResets()
+            setNewPlant("no")
+        }else {
+            setNewPlant("yes")
+        }
     }
 
     function handleClick(){
@@ -57,6 +92,11 @@ function UserPage() {
         <button onClick={handleClick}>Check User</button>
         <div>
             {handleUserPlants()}
+        </div>
+        <div>
+            <button onClick={handleNewPlantForm}>{newPlant === "yes"? "Cancel" : "Add New Plant"}</button>
+            {newPlant === "yes"? <PlantForm handleResets={handleResets} setUserPlants={setUserPlants} userPlants={userPlants} setNewPlant={setNewPlant} currentUser={currentUser} setErrors={setErrors} formData={formData} handleChange={handleChange} /> : null}
+            {!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}
         </div>
         <div>
             <button onClick={changeDispPost}>See Your Posts</button>
