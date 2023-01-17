@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { Context } from '../contexts/Context';
 
 const NewUserForm = ({ 
     formData, 
     handleChange, 
-    setCurrentUser, 
     setErrors,
     history }) => {
-    
+        
+    const {setCurrentUser} = useContext(Context)
     function handleSubmit(e){
         e.preventDefault();
         const user = {

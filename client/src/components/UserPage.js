@@ -1,9 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import PostCard from './PostCard'
 import CommentCard from './CommentCard'
 import PlantCard from './PlantCard'
+import { Context } from '../contexts/Context'
 
-function UserPage({currentUser, userComments, userLikes, userPosts, userPlants}) {
+function UserPage() {
+    const {
+		currentUser,
+		userPosts,
+		userComments,
+		userLikes,
+		userPlants
+	} = useContext(Context)
     const [display, setDisplay] = useState('posts')
     
     if (!currentUser){

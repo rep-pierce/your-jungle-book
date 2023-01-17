@@ -1,14 +1,18 @@
-import React from "react";
+import React, {useContext} from "react";
 import { NavLink, useHistory } from "react-router-dom";
+import { Context } from "../contexts/Context";
 
 
-function NavBar({ 
-	setUserPosts,
-	setUserComments,
-	setUserLikes,
-	setUserPlants,
-	currentUser, 
-	setCurrentUser }) {
+function NavBar() {
+	const {
+		currentUser,
+		setCurrentUser,
+		setUserPosts,
+		setUserComments,
+		setUserLikes,
+		setUserPlants
+	} = useContext(Context)
+	
 	const history = useHistory()
 	function handleLogOut() {
 		fetch("/logout", {

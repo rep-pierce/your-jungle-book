@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import PostCard from './PostCard'
+import { Context } from '../contexts/Context'
 
-function HomePage({currentUser, posts, setPosts}) {
-
+function HomePage() {
+  const {posts} = useContext(Context)
   function renderPosts(){
     return posts.map( post => <PostCard key={post.id} post={post} />)
   }

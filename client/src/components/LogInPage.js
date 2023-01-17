@@ -3,12 +3,7 @@ import LogInForm from './LogInForm';
 import NewUserForm from './NewUserForm';
 import { useHistory } from 'react-router-dom';
 
-function LogInPage({
-	setCurrentUser,
-	setUserPosts,
-	setUserComments,
-	setUserLikes,
-	setUserPlants}) {
+function LogInPage() {
     const [formData, setFormData] = useState({
 		name: "",
 		age: "",
@@ -57,11 +52,6 @@ function LogInPage({
 					password={formData.password}
 					handleChange={handleChange}
 					setErrors={setErrors}
-					setCurrentUser={setCurrentUser}
-					setUserPosts={setUserPosts}
-					setUserComments={setUserComments}
-					setUserLikes={setUserLikes}
-					setUserPlants={setUserPlants}
                     history={history}
 				/>
 			);
@@ -70,7 +60,6 @@ function LogInPage({
 				<NewUserForm
 					formData={formData}
 					handleChange={handleChange}
-					setCurrentUser={setCurrentUser}
 					setErrors={setErrors}
                     history={history}
 				/>
