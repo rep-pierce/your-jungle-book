@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, { useContext} from 'react'
 import { Context } from '../contexts/Context'
 import MiniPlantCard from './MiniPlantCard'
 
@@ -13,6 +13,7 @@ function PostForm({currentUser, formData, handleChange}) {
         handleNewPost
     } = useContext(Context)
     
+    // handles a display variable named addPlant that either renders the users plant to add to a post or causes the form to not render
     function handleAddPlant(){
         if (addPlant === "yes"){
             setAddPlant("no")
@@ -21,9 +22,13 @@ function PostForm({currentUser, formData, handleChange}) {
             setAddPlant("yes")
         }
     }
+
+    // renders mini plant cards rather than full plant cards to link to a post
     function handleMiniCards(){
         return userPlants.map(plant => <MiniPlantCard key={plant.id} plant={plant} setSelectedPlant={setSelectedPlant} selectedPlant={selectedPlant} />)
     }
+
+    // renders a loading div while we wait for userPlants to get populated
     if (!userPlants){
         return <h2>Loading...</h2>
     }

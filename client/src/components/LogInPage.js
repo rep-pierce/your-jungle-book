@@ -15,6 +15,8 @@ function LogInPage() {
     const [errors, setErrors] = useState([]);
     const [display, setDisplay] = useState("login");
     const history = useHistory()
+
+	// dynamically handles the formData and allows for controlled inputs
     function handleChange(e) {
 		const value = e.target.value;
 		const name = e.target.name;
@@ -23,6 +25,8 @@ function LogInPage() {
 			[name]: value,
 		}));
 	};
+
+	// resets formData and errors
     function handleResets() {
 		setFormData({
 			name: "",
@@ -35,6 +39,7 @@ function LogInPage() {
 		setErrors([]);
 	}
 
+	// these 2 just change the display option between the NewUser signup form and existing user LogIn form
     function handleLog(){
 		handleResets();
 		setDisplay("login");
@@ -44,6 +49,7 @@ function LogInPage() {
 		setDisplay("new");
 	};
 
+	// after the display is set, this function handles rendering the forms out
     function handleRender(){
 		if (display === "login") {
 			return (

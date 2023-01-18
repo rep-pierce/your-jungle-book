@@ -13,6 +13,7 @@ function NavBar() {
 		setUserPlants
 	} = useContext(Context)
 	
+	// logs the user out through a logout fetch request
 	const history = useHistory()
 	function handleLogOut() {
 		fetch("/logout", {

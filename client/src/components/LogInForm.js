@@ -16,6 +16,8 @@ function LoginForm({
 		setUserPlants
 	} = useContext(Context)
 	
+	// submits the login form
+	// takes user info, and pieces it out by setting the users posts, comments, likes, and plants
 	function handleSubmit(e) {
 		e.preventDefault();
 		const user = {

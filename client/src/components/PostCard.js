@@ -5,9 +5,11 @@ import { Context } from '../contexts/Context'
 function PostCard({post}) {
     const {currentUser, userLikes, setUserLikes} = useContext(Context)
     const history = useHistory()
+    // renders out the tags on the post
     function handleTags(){
         return post.tags.map(tag => <p key={Math.random()*1000000}>{tag.name}</p>)
     }
+    // handles liking and unliking a post
     function handleLikes(e){
       const like = {
           user_id: currentUser.id,
@@ -33,6 +35,7 @@ function PostCard({post}) {
         })
       }
     }
+    // navigates you to a the posts view
     function handleNav(){
         history.push(`/posts/${post.id}`)
     }

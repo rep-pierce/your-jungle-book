@@ -5,16 +5,18 @@ function PostView() {
     const { id } = useParams()
     const [post, setPost] = useState(null)
 
+    // this is an async function that uses the show route for posts, it uses the useParams hook as well as async and await so nothing renders out of order
     useEffect(() => {
-		const fetchData = async () => {
-			const response = await fetch(`/posts/${id}`);
-			const post = await response.json();
-			setPost(post);
-		};
+		    const fetchData = async () => {
+		    	  const response = await fetch(`/posts/${id}`);
+		    	  const post = await response.json();
+		    	  setPost(post);
+		    };
 
-		fetchData();
-	}, [id]);
+		    fetchData();
+	  }, [id]);
 
+    // another stop precaution that forces our website to wait until out post is loaded
     if (!post){
         return <div>Loading...</div>
     }

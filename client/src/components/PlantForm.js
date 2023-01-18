@@ -1,6 +1,8 @@
 import React from 'react'
 
 function PlantForm({formData, handleResets, handleChange, currentUser, setNewPlant, setErrors, setUserPlants, userPlants}) {
+    
+    // handles adding a new plant for a user
     function handleSubmit(e){
         e.preventDefault()
         const plant = {

@@ -23,6 +23,8 @@ function UserPage() {
     const [errors, setErrors] = useState([]);
     const [display, setDisplay] = useState('posts')
     const [newPlant, setNewPlant] = useState('no')
+
+    // dynamically handles the formData and allows for controlled inputs
     function handleChange(e) {
 		const value = e.target.value;
 		const name = e.target.name;
@@ -31,6 +33,8 @@ function UserPage() {
 			[name]: value,
 		}));
 	};
+
+    // resets our formData as well as errors
     function handleResets(){
         setFormData({
             name: "",
@@ -41,9 +45,12 @@ function UserPage() {
         setErrors([])
     }
     
+    // renders a loading div until our currentUser is populated
     if (!currentUser){
         return <h2>Loading...</h2>
     }
+
+    // handles changing the display between a new plant form and nothing
     function handleNewPlantForm(){
         if (newPlant === "yes"){
             handleResets()
@@ -53,9 +60,12 @@ function UserPage() {
         }
     }
 
+    // remove this one soon
     function handleClick(){
         console.log(currentUser)
     }
+
+    // these 4 functions just render out the users posts, comments, plants, and likes
     function handleUserPosts(){
         return userPosts.map(post => <PostCard key={post.id + 1000000} post={post} />)
     }
@@ -68,6 +78,8 @@ function UserPage() {
     function handleUserLikes(){
         return userLikes.map(post => <PostCard key={post.id + 1000000000} post={post} />)
     }
+
+    // this function handles a display state variable that chooses between showing the users posts, comments, plants, and likes
     function handleDisplay(){
         if (display === "likes"){
             return handleUserLikes()
@@ -77,6 +89,8 @@ function UserPage() {
             return handleUserPosts()
         }
     }
+
+    // these 3 functions handle changing the display variable between our 3 different views, comments, users posts, and liked posts
     function changeDispComment(){
         setDisplay("comments")
     }

@@ -19,6 +19,8 @@ const ContextProvider = (props) => {
 		image: "",
         post_body: ""
     })
+
+    // resets the post form information, this includes plants selected to be linked to the post, reseting errors, and it also handles reseting the addPlant display state variable
     function handlePostResets(){
         setPostForm({
             title: "",
@@ -30,6 +32,8 @@ const ContextProvider = (props) => {
         setAddPlant("no")
     }
 
+    // handles creating a new post through a POST fetch
+    // the post information also contains the selected plants and are sent to the backend through the posts_plants_ids parameter
     function handleNewPost(e){
         e.preventDefault()
         const newPost = {
@@ -59,6 +63,7 @@ const ContextProvider = (props) => {
         })
     }
 
+    // this useEffect checks user sessions to see if it can keep a user logged in
     useEffect(() => {
 		fetch("/auth").then((r) => {
 			if (r.ok) {
@@ -73,6 +78,7 @@ const ContextProvider = (props) => {
 	    })
     }, []);
     
+    // this useEffect grabs all of the posts so we can render them onto the page in the homepage component
     useEffect(() => {
         fetch("/posts")
             .then(r => r.json())

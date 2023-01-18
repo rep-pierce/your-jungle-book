@@ -8,6 +8,8 @@ const NewUserForm = ({
     history }) => {
         
     const {setCurrentUser} = useContext(Context)
+
+    // handles the creation of a new user
     function handleSubmit(e){
         e.preventDefault();
         const user = {
