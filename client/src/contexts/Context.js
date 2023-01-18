@@ -17,7 +17,7 @@ const ContextProvider = (props) => {
     const [postForm, setPostForm] = useState({
         title: "",
 		image: "",
-        post_body: "",
+        post_body: ""
     })
     function handlePostResets(){
         setPostForm({
@@ -29,19 +29,6 @@ const ContextProvider = (props) => {
         setPostErrors([])
         setAddPlant("no")
     }
-    function handlePostPlants(plant, postID){
-        const pps = {
-            plant_id: plant.id,
-            post_id: postID
-        }
-        fetch("/posts_plants",{
-            method: "POST",
-            headers: {
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify(pps)
-        })
-    }
 
     function handleNewPost(e){
         e.preventDefault()
@@ -49,7 +36,8 @@ const ContextProvider = (props) => {
             user_id: currentUser.id,
             title: postForm.title,
             image: postForm.image,
-            post_body: postForm.post_body
+            post_body: postForm.post_body,
+            posts_plants_ids: selectedPlant
         }
         fetch("/posts",{
             method: "POST",
@@ -61,9 +49,6 @@ const ContextProvider = (props) => {
             if (r.ok) {
                 r.json().then((post) => {
                     setUserPosts([...userPosts, post])
-                    selectedPlant.forEach((plant) => {
-                        handlePostPlants(plant, post.id)
-                    })
                     setPosts([post, ...posts])
                     handlePostResets()
                     history.push('/')

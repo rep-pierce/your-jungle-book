@@ -11,6 +11,9 @@ class PostsController < ApplicationController
 
     def create
         post = Post.create!(post_params)
+        params[:posts_plants_ids].each do |plant|
+            post.posts_plants.create(plant_id: plant)
+        end
         render json: post
     end
 

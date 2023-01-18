@@ -6,11 +6,11 @@ function MiniPlantCard({plant, selectedPlant, setSelectedPlant}) {
       if (inSelected === "yes"){
         setInSelected("no")
         console.log(selectedPlant)
-        const newSelected = selectedPlant.filter(plnt => plnt.id !== plant.id)
+        const newSelected = selectedPlant.filter(plnt => plnt !== plant.id)
         setSelectedPlant(newSelected)
       }else {
         setInSelected("yes")
-        setSelectedPlant([...selectedPlant, plant])
+        setSelectedPlant([...selectedPlant, plant.id])
       }
     }
 
