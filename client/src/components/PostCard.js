@@ -48,7 +48,7 @@ function PostCard({post}) {
                 <p>{post.post_body}</p>
                 {!post.user? null : <p>Post By: {post.user.username}</p>}
             </div>
-            <button onClick={handleLikes}>{userLikes.some(pst => pst.id === post.id) ? "★" : "☆" }</button>
+            {!currentUser ? null : <button onClick={handleLikes}>{userLikes.some(pst => pst.id === post.id) ? "★" : "☆" }</button>}
         </div>
     )
 }
