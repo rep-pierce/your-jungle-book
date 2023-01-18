@@ -39,6 +39,9 @@ function PostCard({post}) {
     function handleNav(){
         history.push(`/posts/${post.id}`)
     }
+    function handleUserNav(){
+        history.push(`/users/${post.user.id}`)
+    }
     return (
         <div>
             <div onClick={handleNav}>
@@ -46,8 +49,8 @@ function PostCard({post}) {
                 {!post.tags ? null : handleTags()}
                 <p>{post.image}</p>
                 <p>{post.post_body}</p>
-                {!post.user? null : <p>Post By: {post.user.username}</p>}
             </div>
+            {!post.user? null : <p onClick={handleUserNav}>Post By: {post.user.username}</p>}
             {!currentUser ? null : <button onClick={handleLikes}>{userLikes.some(pst => pst.id === post.id) ? "★" : "☆" }</button>}
         </div>
     )

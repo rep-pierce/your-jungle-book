@@ -37,7 +37,7 @@ function NavBar() {
 			</NavLink>
 			{!currentUser ? null :
 			(
-				<NavLink to="/userpage">
+				<NavLink to="/profilepage">
 					{" "}Profile{" "}
 				</NavLink>
 			)}

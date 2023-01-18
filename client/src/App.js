@@ -3,9 +3,10 @@ import { Switch, Route } from "react-router-dom";
 import LogInPage from "./components/LogInPage";
 import HomePage from "./components/HomePage";
 import NavBar from "./components/NavBar";
-import UserPage from "./components/UserPage";
+import ProfilePage from "./components/ProfilePage";
 import NewPostPage from "./components/NewPostPage";
 import PostView from "./components/PostView";
+import UserPage from "./components/UserPage";
 
 function App() {
 
@@ -16,14 +17,17 @@ function App() {
           <Route path="/loginpage">
             <LogInPage />
           </Route>
-          <Route path="/userpage">
-            <UserPage />
+          <Route path="/profilepage">
+            <ProfilePage />
           </Route>
           <Route path="/newpost">
             <NewPostPage />
           </Route>
           <Route path="/posts/:id">
             <PostView />
+          </Route>
+          <Route path="/users/:id">
+            <UserPage />
           </Route>
           <Route path="/">
             <HomePage />

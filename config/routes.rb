@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   delete "/likes/:user_id/:post_id", to: "likes#destroy"
 
   post "/signup", to: "users#create"
-  get "/auth", to: "users#show"
+  get "/auth", to: "users#auth"
 
   get '*path',
       to: 'fallback#index',
