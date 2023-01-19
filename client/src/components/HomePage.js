@@ -2,8 +2,10 @@ import React, {useContext} from 'react'
 import PostCard from './PostCard'
 import { Context } from '../contexts/Context'
 
+
 function HomePage() {
   const {posts} = useContext(Context)
+  
   if (!posts){
     return <div>Loading...</div>
   }

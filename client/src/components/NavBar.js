@@ -1,6 +1,7 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { Context } from "../contexts/Context";
+import SearchBar from './SearchBar'
 
 
 function NavBar() {
@@ -10,8 +11,10 @@ function NavBar() {
 		setUserPosts,
 		setUserComments,
 		setUserLikes,
-		setUserPlants
+		setUserPlants,
+		posts
 	} = useContext(Context)
+	const [search, setSearch] = useState("")
 	
 	// logs the user out through a logout fetch request
 	const history = useHistory()
@@ -47,6 +50,7 @@ function NavBar() {
 					{" "}Create Post{" "}
 				</NavLink>
 			)}
+			<SearchBar posts={posts} search={search} setSearch={setSearch} />
 			{!currentUser ? (
 				<NavLink to="/loginpage">
 					{" "}Log In{" "}
