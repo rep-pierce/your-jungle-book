@@ -8,7 +8,7 @@ function PostView() {
     const { id } = useParams()
     
     const [errors, setErrors] = useState([])
-    const {currentUser, post, setPost, userLikes, handleLikes} = useContext(Context)
+    const {currentUser, post, setPost, userLikes, handleLikes, isUsers} = useContext(Context)
     const history = useHistory()
 
     // this is an async function that uses the show route for posts, it uses the useParams hook as well as async and await so nothing renders out of order
@@ -21,6 +21,7 @@ function PostView() {
 
 		    fetchData();
 	  }, [id, setPost]);
+    const inView = true
     function handleComments(){
       return post.comments.map((comment) => <CommentCard key={Math.random()*1000000} comment={comment} />)
     }
@@ -39,6 +40,7 @@ function PostView() {
     <div>
         <h1>{post.title}</h1>
         <h5 onClick={handleUserNav}>Post By: {post.user.username}</h5>
+        {isUsers(post, inView)}
         <p>{!currentUser ? null : <button onClick={(e) => {
           handleLikes(e, post)
           userLikes.some(pst => pst.id === post.id) ? post.likes-- : post.likes++ 

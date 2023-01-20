@@ -63,6 +63,25 @@ const ContextProvider = (props) => {
             }
         })
     }
+    function handleDeletePost(pst, inView){
+        setUserPosts(userPosts.filter((pt) => pt.id !== pst.id))
+        setPosts(posts.filter((pt) => pt.id !== pst.id))
+        fetch(`/posts/${pst.id}`, {
+          method: "DELETE",
+        })
+        if (inView){
+            setPost(null)
+            history.push("/")
+        }
+    }
+
+    function isUsers(pst, inView){
+        if (!pst.user){
+            return null
+        }else {
+            return pst.user.id === currentUser.id ? <button onClick={() => handleDeletePost(pst, inView)}>Delete</button> : null
+        }
+    }
 
     // this useEffect checks user sessions to see if it can keep a user logged in
     useEffect(() => {
@@ -138,7 +157,8 @@ const ContextProvider = (props) => {
             setSelectedPlant,
             handleLikes,
             post,
-            setPost
+            setPost,
+            isUsers
         }}>
             {props.children}
         </Context.Provider>

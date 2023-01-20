@@ -3,8 +3,9 @@ import { useHistory } from 'react-router-dom'
 import { Context } from '../contexts/Context'
 
 function PostCard({post}) {
-    const {currentUser, userLikes, handleLikes} = useContext(Context)
+    const {currentUser, userLikes, handleLikes, isUsers} = useContext(Context)
     const history = useHistory()
+    const inView = false
     // renders out the tags on the post
     function handleTags(){
         return post.tags.map(tag => <p key={Math.random()*1000000}>{tag.name}</p>)
@@ -26,6 +27,7 @@ function PostCard({post}) {
                 <p>{post.post_body}</p>
             </div>
             {!post.user? null : <p onClick={handleUserNav}>Post By: {post.user.username}</p>}
+            {isUsers(post, inView)}
             {!currentUser ? null : <button onClick={(e) => {handleLikes(e, post)}}>{userLikes.some(pst => pst.id === post.id) ? "★" : "☆" }</button>}
         </div>
     )
