@@ -6,9 +6,9 @@ import CommentForm from './CommentForm';
 
 function PostView() {
     const { id } = useParams()
-    const [post, setPost] = useState(null)
+    
     const [errors, setErrors] = useState([])
-    const {currentUser} = useContext(Context)
+    const {currentUser, post, setPost, userLikes, handleLikes} = useContext(Context)
     const history = useHistory()
 
     // this is an async function that uses the show route for posts, it uses the useParams hook as well as async and await so nothing renders out of order
@@ -20,7 +20,7 @@ function PostView() {
 		    };
 
 		    fetchData();
-	  }, [id]);
+	  }, [id, setPost]);
     function handleComments(){
       return post.comments.map((comment) => <CommentCard key={Math.random()*1000000} comment={comment} />)
     }
@@ -39,7 +39,10 @@ function PostView() {
     <div>
         <h1>{post.title}</h1>
         <h5 onClick={handleUserNav}>Post By: {post.user.username}</h5>
-        <p>★ {post.likes}</p>
+        <p>{!currentUser ? null : <button onClick={(e) => {
+          handleLikes(e, post)
+          userLikes.some(pst => pst.id === post.id) ? post.likes-- : post.likes++ 
+          }}>{userLikes.some(pst => pst.id === post.id) ? "★" : "☆" }</button>} {post.likes}</p>
         {post.tags.length > 0 ? 
         <div>
           {handleTags()}

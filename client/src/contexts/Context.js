@@ -14,6 +14,7 @@ const ContextProvider = (props) => {
     const [selectedPlant, setSelectedPlant] = useState([])
     const [addPlant, setAddPlant] = useState("no")
     const [postErrors, setPostErrors] = useState([])
+    const [post, setPost] = useState(null)
     const [postForm, setPostForm] = useState({
         title: "",
 		image: "",
@@ -77,6 +78,33 @@ const ContextProvider = (props) => {
 	        }
 	    })
     }, []);
+
+    // handles liking and unliking a post
+    function handleLikes(e, pst){
+        const like = {
+            user_id: currentUser.id,
+            post_id: pst.id
+        }
+        if (e.target.innerHTML === "☆"){
+          fetch("/likes",{
+              method: "POST",
+              headers: {
+                  'Content-Type':'application/json'
+              },
+              body: JSON.stringify(like)
+          })
+          .then((r) => r.json())
+          .then((liked) => {
+              setUserLikes([...userLikes, liked])
+          })
+        } else {
+          const newLikes = userLikes.filter((likedPost) => likedPost.id !== pst.id)
+          setUserLikes(newLikes)
+          fetch(`/likes/${currentUser.id}/${pst.id}`, {
+            method: "DELETE",
+          })
+        }
+      }
     
     // this useEffect grabs all of the posts so we can render them onto the page in the homepage component
     useEffect(() => {
@@ -107,7 +135,10 @@ const ContextProvider = (props) => {
             postErrors,
             setPostErrors,
             selectedPlant,
-            setSelectedPlant
+            setSelectedPlant,
+            handleLikes,
+            post,
+            setPost
         }}>
             {props.children}
         </Context.Provider>
