@@ -9,8 +9,9 @@ class PlantsController < ApplicationController
     end
     def water
         plant = Plant.find(params[:id])
+        post = plant.posts.create(user_id: plant.user.id, title: "#{plant.user.username} watered #{plant.name}", image: plant.image, post_body: "#{plant.user.username} just watered their plant today!")
         plant.update(watered_at: Time.now, watered: true)
-        render json: plant, status: :accepted
+        render json: {plant: plant, post: post}, status: :accepted
     end
     
     def create

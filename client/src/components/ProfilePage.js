@@ -12,7 +12,10 @@ function ProfilePage() {
 		userComments,
 		userLikes,
 		userPlants,
-        setUserPlants
+        setUserPlants,
+        setPosts,
+        posts,
+        setUserPosts
 	} = useContext(Context)
     const [formData, setFormData] = useState({
         name: "",
@@ -53,13 +56,16 @@ function ProfilePage() {
             'Content-Type': 'application/json'
           },
         })
-        const updatedPlant = await response.json()
+        const updatedItems = await response.json()
+        // debugger
         setUserPlants(userPlants.map(plant => {
           if (plant.id === plantId) {
-            return updatedPlant
+            return updatedItems.plant
           }
           return plant
         }))
+        setPosts([updatedItems.post, ...posts])
+        setUserPosts([updatedItems.post, ...userPosts])
     }
     
     // renders a loading div until our currentUser is populated
