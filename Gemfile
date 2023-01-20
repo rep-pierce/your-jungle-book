@@ -19,6 +19,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # gem "rack-cors"
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'whenever', require: false
+
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'faker'

@@ -40,9 +40,26 @@ function ProfilePage() {
             name: "",
             image: "",
             watered: null,
-            status: ""
+            status: "",
+            frequency: null,
         })
         setErrors([])
+    }
+
+    const handleWatering = async (plantId) => {
+        const response = await fetch(`/plants/${plantId}/water`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        })
+        const updatedPlant = await response.json()
+        setUserPlants(userPlants.map(plant => {
+          if (plant.id === plantId) {
+            return updatedPlant
+          }
+          return plant
+        }))
     }
     
     // renders a loading div until our currentUser is populated
@@ -73,7 +90,7 @@ function ProfilePage() {
         return userComments.map(comment => <CommentCard key={comment.id + 1000000} comment={comment} />)
     }
     function handleUserPlants(){
-        return userPlants.map(plant => <PlantCard key={plant.id + 1000000} plant={plant} />)
+        return userPlants.map(plant => <PlantCard handleWatering={handleWatering} key={plant.id + 1000000} plant={plant} />)
     }
     function handleUserLikes(){
         return userLikes.map(post => <PostCard key={post.id + 1000000000} post={post} />)

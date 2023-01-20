@@ -19,17 +19,17 @@ ryan = User.create(name: "Ryan", age: 25, username: "Ryan", password: "ryan", im
 red = User.create(name: "Red", age: 28, username: "Red", password: "red", image: 'red', email: "ryan3@gmail.com")
 puts "seeded users"
 
-plant1 = Plant.create(user: rep, name: "Plant1", image: "Plant1", watered: true, status: "Watered this last night")
-plant2 = Plant.create(user: rep, name: "Plant2", image: "Plant2", watered: true, status: "Watered this last night")
-plant3 = Plant.create(user: rep, name: "Plant3", image: "Plant3", watered: true, status: "Watered this last night")
+plant1 = Plant.create(user: rep, name: "Plant1", image: "Plant1", watered: true, status: "Watered this last night", frequency: 3, watered_at: Time.now)
+plant2 = Plant.create(user: rep, name: "Plant2", image: "Plant2", watered: true, status: "Watered this last night", frequency: 3, watered_at: Time.now)
+plant3 = Plant.create(user: rep, name: "Plant3", image: "Plant3", watered: true, status: "Watered this last night", frequency: 3, watered_at: Time.now)
 
-plant4 = Plant.create(user: ryan, name: "Plant4", image: "Plant4", watered: false, status: "Haven't watered them in a while")
-plant5 = Plant.create(user: ryan, name: "Plant5", image: "Plant5", watered: false, status: "Haven't watered them in a while")
-plant6 = Plant.create(user: ryan, name: "Plant6", image: "Plant6", watered: false, status: "Haven't watered them in a while")
+plant4 = Plant.create(user: ryan, name: "Plant4", image: "Plant4", watered: false, status: "Haven't watered them in a while", frequency: 2, watered_at: 1.month.ago)
+plant5 = Plant.create(user: ryan, name: "Plant5", image: "Plant5", watered: false, status: "Haven't watered them in a while", frequency: 2, watered_at: 1.month.ago)
+plant6 = Plant.create(user: ryan, name: "Plant6", image: "Plant6", watered: false, status: "Haven't watered them in a while", frequency: 2, watered_at: 1.month.ago)
 
-plant7 = Plant.create(user: red, name: "Plant7", image: "Plant7", watered: true, status: "Watered this this morning")
-plant8 = Plant.create(user: red, name: "Plant8", image: "Plant8", watered: true, status: "Watered this this morning")
-plant9 = Plant.create(user: red, name: "Plant9", image: "Plant9", watered: true, status: "Watered this this morning")
+plant7 = Plant.create(user: red, name: "Plant7", image: "Plant7", watered: true, status: "Watered this this morning", frequency: 1, watered_at: Time.now)
+plant8 = Plant.create(user: red, name: "Plant8", image: "Plant8", watered: true, status: "Watered this this morning", frequency: 1, watered_at: Time.now)
+plant9 = Plant.create(user: red, name: "Plant9", image: "Plant9", watered: true, status: "Watered this this morning", frequency: 1, watered_at: Time.now)
 puts "seeded plants"
 
 post1 = Post.create(user: rep, title: "Post1", image: "Post1", post_body: "Here is the first post")

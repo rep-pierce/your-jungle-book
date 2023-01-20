@@ -8,10 +8,12 @@ Rails.application.routes.draw do
   resources :plants, only: [:index, :create, :show, :destroy, :update]
   resources :users, only:[:index, :create, :show, :destroy, :update]
 
+
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
   delete "/likes/:user_id/:post_id", to: "likes#destroy"
+  patch '/plants/:id/water', to: 'plants#water'
 
   post "/signup", to: "users#create"
   get "/auth", to: "users#auth"

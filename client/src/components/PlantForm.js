@@ -10,8 +10,10 @@ function PlantForm({formData, handleResets, handleChange, currentUser, setNewPla
             name: formData.name,
             image: formData.image,
             watered: formData.watered,
+            frequency: parseInt(formData.frequency),
             status: formData.status
         }
+        // debugger
         fetch("/plants",{
             method: "POST",
             headers: {
@@ -42,12 +44,16 @@ function PlantForm({formData, handleResets, handleChange, currentUser, setNewPla
                     <input type="text" name="image" value={formData.image} onChange={(e) => handleChange(e)} />
                 </div>
                 <div>
-                    <label htmlFor="watered">Watered:</label>
+                    <label htmlFor="watered">Watered: </label>
                     <select name="watered" onChange={(e) => handleChange(e)}>
                       <option value="-">-</option>
                       <option value={true}>true</option>
                       <option value={false}>false</option>
                     </select>
+                </div>
+                <div>
+                    <label htmlFor="frequency">Water Frequency in Days: </label>
+                    <input type="text" name="frequency" value={formData.frequency} onChange={(e) => handleChange(e)} />
                 </div>
                 <div>
                     <label htmlFor="status">Hows Your Plant Doing?</label>
