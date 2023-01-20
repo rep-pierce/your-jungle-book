@@ -76,7 +76,7 @@ const ContextProvider = (props) => {
     }
 
     function isUsers(pst, inView){
-        if (!pst.user){
+        if (!pst.user || !currentUser){
             return null
         }else {
             return pst.user.id === currentUser.id ? <button onClick={() => handleDeletePost(pst, inView)}>Delete</button> : null
