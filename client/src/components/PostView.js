@@ -39,6 +39,7 @@ function PostView() {
     <div>
         <h1>{post.title}</h1>
         <h5 onClick={handleUserNav}>Post By: {post.user.username}</h5>
+        <p>★ {post.likes}</p>
         {post.tags.length > 0 ? 
         <div>
           {handleTags()}
