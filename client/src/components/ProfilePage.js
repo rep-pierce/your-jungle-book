@@ -21,7 +21,8 @@ function ProfilePage() {
         name: "",
         image: "",
         watered: null,
-        status: ""
+        status: "",
+        frequency: 0,
     })
     const [errors, setErrors] = useState([]);
     const [display, setDisplay] = useState('posts')
@@ -44,13 +45,13 @@ function ProfilePage() {
             image: "",
             watered: null,
             status: "",
-            frequency: null,
+            frequency: 0,
         })
         setErrors([])
     }
 
-    const handleWatering = async (plantId) => {
-        const response = await fetch(`/plants/${plantId}/water`, {
+    const handleWatering = async (plantId, makePost) => {
+        const response = await fetch(`/plants/${plantId}/${makePost? "water_with_post" : "water"}`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json'
@@ -64,8 +65,11 @@ function ProfilePage() {
           }
           return plant
         }))
-        setPosts([updatedItems.post, ...posts])
-        setUserPosts([updatedItems.post, ...userPosts])
+        if (updatedItems.post){
+            setPosts([updatedItems.post, ...posts])
+            setUserPosts([updatedItems.post, ...userPosts])
+        }
+        
     }
     
     // renders a loading div until our currentUser is populated

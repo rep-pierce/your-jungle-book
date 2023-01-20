@@ -7,11 +7,16 @@ class PlantsController < ApplicationController
         plant = Plant.find(params[:id])
         render json: plant
     end
-    def water
+    def water_with_post
         plant = Plant.find(params[:id])
         post = plant.posts.create(user_id: plant.user.id, title: "#{plant.user.username} watered #{plant.name}", image: plant.image, post_body: "#{plant.user.username} just watered their plant today!")
-        plant.update(watered_at: Time.now, watered: true)
+        plant.update(watered_at: Time.now, watered: true, status: "I watered my #{plant.name} on #{Date.today}")
         render json: {plant: plant, post: post}, status: :accepted
+    end
+    def water
+        plant = Plant.find(params[:id])
+        plant.update(watered_at: Time.now, watered: true, status: "I watered my #{plant.name} on #{Date.today}")
+        render json: {plant: plant}
     end
     
     def create
