@@ -75,7 +75,7 @@ const ContextProvider = (props) => {
         }
     }
     function isUsersPlant(plnt){
-        userPlants.some(plt => plt.id === plnt.id)
+        return userPlants.some(plt => plt.id === plnt.id)
     }
 
     function isUsers(pst, inView){

@@ -1,25 +1,38 @@
 import React from 'react'
 
-function PlantForm({formData, handleResets, handleChange, currentUser, setNewPlant, setErrors, setUserPlants, userPlants}) {
+function PlantForm({handleFile, formData, handleResets, handleChange, currentUser, setNewPlant, setErrors, setUserPlants, userPlants}) {
     
     // handles adding a new plant for a user
     function handleSubmit(e){
         e.preventDefault()
-        const plant = {
-            user_id: currentUser.id,
-            name: formData.name,
-            image: formData.image,
-            watered: formData.watered,
-            frequency: parseInt(formData.frequency),
-            status: formData.status
-        }
+        let data = new FormData()
+        data.append("user_id", currentUser.id)
+        data.append("name", formData.name)
+        data.append("image", formData.image)
+        data.append("watered", formData.watered)
+        data.append("frequency", parseInt(formData.frequency))
+        data.append("status", formData.status)
+        // fetch("/upload",{
+        //     method: "POST",
+        //     headers: {
+        //         Accepts: "application/json"
+        //     },
+        // })
+        // const plant = {
+        //     user_id: currentUser.id,
+        //     name: formData.name,
+        //     image: formData.image,
+        //     watered: formData.watered,
+        //     frequency: parseInt(formData.frequency),
+        //     status: formData.status
+        // }
         // debugger
         fetch("/plants",{
             method: "POST",
             headers: {
-                'Content-Type':'application/json'
+                Accepts:'application/json'
             },
-            body: JSON.stringify(plant)
+            body: data
         }).then((r) => {
             if (r.ok) {
                 r.json().then((plant) => {
@@ -41,7 +54,7 @@ function PlantForm({formData, handleResets, handleChange, currentUser, setNewPla
                 </div>
                 <div>
                     <label htmlFor="image">Image:</label>
-                    <input type="text" name="image" value={formData.image} onChange={(e) => handleChange(e)} />
+                    <input type="file" name="image" onChange={(e) => handleFile(e)} />
                 </div>
                 <div>
                     <label htmlFor="watered">Watered: </label>

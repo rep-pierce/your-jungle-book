@@ -19,7 +19,7 @@ function ProfilePage() {
 	} = useContext(Context)
     const [formData, setFormData] = useState({
         name: "",
-        image: "",
+        image: null,
         watered: null,
         status: "",
         frequency: 0,
@@ -37,6 +37,14 @@ function ProfilePage() {
 			[name]: value,
 		}));
 	};
+    function handleFile(e){
+        const file = e.target.files[0]
+        const name = e.target.name
+        setFormData((formData) => ({
+            ...formData,
+            [name]: file,
+        }))
+    }
 
     // resets our formData as well as errors
     function handleResets(){
@@ -136,7 +144,7 @@ function ProfilePage() {
         </div>
         <div>
             <button onClick={handleNewPlantForm}>{newPlant === "yes"? "Cancel" : "Add New Plant"}</button>
-            {newPlant === "yes"? <PlantForm handleResets={handleResets} setUserPlants={setUserPlants} userPlants={userPlants} setNewPlant={setNewPlant} currentUser={currentUser} setErrors={setErrors} formData={formData} handleChange={handleChange} /> : null}
+            {newPlant === "yes"? <PlantForm handleFile={handleFile} handleResets={handleResets} setUserPlants={setUserPlants} userPlants={userPlants} setNewPlant={setNewPlant} currentUser={currentUser} setErrors={setErrors} formData={formData} handleChange={handleChange} /> : null}
             {!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}
         </div>
         <div>
