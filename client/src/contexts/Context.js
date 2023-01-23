@@ -74,6 +74,9 @@ const ContextProvider = (props) => {
             history.push("/")
         }
     }
+    function isUsersPlant(plnt){
+        userPlants.some(plt => plt.id === plnt.id)
+    }
 
     function isUsers(pst, inView){
         if (!pst.user || !currentUser){
@@ -158,7 +161,8 @@ const ContextProvider = (props) => {
             handleLikes,
             post,
             setPost,
-            isUsers
+            isUsers,
+            isUsersPlant
         }}>
             {props.children}
         </Context.Provider>

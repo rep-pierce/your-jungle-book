@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import { Context } from '../contexts/Context'
 
 function PlantCard({plant, handleWatering}) {
+  const {isUsersPlant} = useContext(Context)
   const [makePost, setMakePost] = useState(true)
 
   function handleMakePost(){
@@ -14,7 +16,7 @@ function PlantCard({plant, handleWatering}) {
         <p>{plant.image}</p>
         <p>{plant.status}</p>
         {
-        plant.watered? 
+        plant.watered || !isUsersPlant(plant)? 
         <p>Last Watered: {plant.watered_at.slice(0, 10)}</p> : 
         (<div>
           <button onClick={ () => handleWatering(plant.id, makePost)}>Water Plant</button>
