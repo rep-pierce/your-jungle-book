@@ -26,7 +26,7 @@ set :output, './log/cron.log'
 
 every 1.minutes do
     runner 'puts Time.now'
-    runner 'puts ENV['DATABASE_URL']'
+    runner 'puts Rails.env'
     runner "puts 'Checking if Watered'"
     rake 'plants:water'
 end
