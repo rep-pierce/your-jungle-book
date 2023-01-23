@@ -18,7 +18,15 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+# Clear cron: crontab -r
+# update cron: whenever --update-crontab
+# update cron dev: whenever --update-crontab --set environment='development'
 
-every 1.day, at: '4:30 am' do
+set :output, './log/cron.log'
+
+every 1.minutes do
+    runner 'puts Time.now'
+    runner 'puts Rails.env'
+    runner "puts 'Checking if Watered'"
     rake 'plants:water'
 end
