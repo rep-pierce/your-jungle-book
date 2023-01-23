@@ -22,11 +22,11 @@
 # update cron: whenever --update-crontab
 # update cron dev: whenever --update-crontab --set environment='development'
 
-set :output, './log/cron.log'
+# set :output, './log/cron.log'
 
-every 10.minutes do
-    runner 'puts Time.now'
-    runner 'puts Rails.env'
-    runner "puts 'Checking if Watered'"
-    rake 'plants:water'
-end
+# every 10.minutes do
+#     runner 'puts Time.now'
+#     runner 'puts Rails.env'
+#     runner "puts 'Checking if Watered'"
+#     rake 'plants:water'
+# end
