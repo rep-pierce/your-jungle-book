@@ -24,7 +24,7 @@
 
 set :output, './log/cron.log'
 
-every 1.minutes do
+every 10.minutes do
     runner 'puts Time.now'
     runner 'puts Rails.env'
     runner "puts 'Checking if Watered'"
