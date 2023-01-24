@@ -1,5 +1,6 @@
 import React, {useState, useContext} from 'react'
 import { Context } from '../contexts/Context'
+import "../css/PlantCard.css"
 
 function PlantCard({plant, handleWatering, handleUpdateImg}) {
   const {isUsersPlant} = useContext(Context)
@@ -44,7 +45,7 @@ function PlantCard({plant, handleWatering, handleUpdateImg}) {
     return isUsersPlant(plant)? 
       (
        <div>
-         <button onClick={handleImgForm}>{renderImgForm === "yes"? "Cancel" : "Update Image"}</button>
+         <button onClick={handleImgForm}>{renderImgForm === "yes"? "X" : "Update Image"}</button>
          {renderImgForm === "no"? 
          null :
          (
@@ -58,7 +59,7 @@ function PlantCard({plant, handleWatering, handleUpdateImg}) {
               <input type="checkbox" checked={makeUpdate} onChange={handleMakeUpdate} />
             </div>
             <div>
-              <input type="submit" />
+              <input className='button' type="submit" />
             </div>
           </form>
          )
@@ -69,7 +70,7 @@ function PlantCard({plant, handleWatering, handleUpdateImg}) {
   
 
   return (
-    <div>
+    <div className='plantCard'>
         <h3>{plant.name}</h3>
         {updatePost()}
         <img src={plant.image} alt={plant.name} />

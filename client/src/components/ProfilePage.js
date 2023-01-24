@@ -4,6 +4,8 @@ import CommentCard from './CommentCard'
 import PlantCard from './PlantCard'
 import { Context } from '../contexts/Context'
 import PlantForm from './PlantForm'
+import "../css/ProfilePage.css"
+import "../css/HomePage.css"
 
 function ProfilePage() {
     const {
@@ -74,6 +76,14 @@ function ProfilePage() {
           return plant
         }))
         if (updatedItems.post){
+            updatedItems.post.user = {
+                age: currentUser.age,
+                id: currentUser.id,
+                image: currentUser.image,
+                name: currentUser.name,
+                username: currentUser.username,
+                email: currentUser.email
+            }
             setPosts([updatedItems.post, ...posts])
             setUserPosts([updatedItems.post, ...userPosts])
         }
@@ -101,6 +111,14 @@ function ProfilePage() {
             return plant
           }))
           if (updatedItems.post){
+            updatedItems.post.user = {
+                age: currentUser.age,
+                id: currentUser.id,
+                image: currentUser.image,
+                name: currentUser.name,
+                username: currentUser.username,
+                email: currentUser.email
+            }
               setPosts([updatedItems.post, ...posts])
               setUserPosts([updatedItems.post, ...userPosts])
           }
@@ -119,11 +137,6 @@ function ProfilePage() {
         }else {
             setNewPlant("yes")
         }
-    }
-
-    // remove this one soon
-    function handleClick(){
-        console.log(currentUser)
     }
 
     // these 4 functions just render out the users posts, comments, plants, and likes
@@ -163,22 +176,23 @@ function ProfilePage() {
     }
 
   return (
-    <div>
-        <button onClick={handleClick}>Check User</button>
-        <div>
-            {handleUserPlants()}
-        </div>
-        <div>
+    <div className='profileContainer'>
+        <div className='newPlant'>
             <button onClick={handleNewPlantForm}>{newPlant === "yes"? "Cancel" : "Add New Plant"}</button>
+        </div>
+        <div className='newPlantFormContainer'>
             {newPlant === "yes"? <PlantForm handleFile={handleFile} handleResets={handleResets} setUserPlants={setUserPlants} userPlants={userPlants} setNewPlant={setNewPlant} currentUser={currentUser} setErrors={setErrors} formData={formData} handleChange={handleChange} /> : null}
             {!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}
         </div>
-        <div>
+        <div className='plantPage'>
+            {handleUserPlants()}
+        </div>
+        <div className='displayContainer'>
             <button onClick={changeDispPost}>See Your Posts</button>
             <button onClick={changeDispComment}>See Your Comments</button>
             <button onClick={changeDispLike}>See Liked Posts</button>
         </div>
-        <div>
+        <div className='postPage'>
             {handleDisplay()}
         </div>
     </div>

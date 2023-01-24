@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import PlantCard from './PlantCard';
 import PostCard from './PostCard';
+import "../css/ProfilePage.css"
+import "../css/HomePage.css"
 
 function UserPage() {
     const {id} = useParams()
@@ -17,10 +19,6 @@ function UserPage() {
         fetchData();
     }, [id]);
 
-    function handleClick(){
-        console.log(user)
-    }
-
     function handlePlants(){
         return user.plants.map((plant) => <PlantCard key={plant.id + 1000000} plant={plant} />)
     }
@@ -33,17 +31,16 @@ function UserPage() {
     }
 
     return (
-        <div>
+        <div className='profileContainer'>
             <h1>Welcome to {user.username}'s Page</h1>
-            <div>
-                <h2>Plants</h2>
+            <h2>Plants</h2>
+            <div className='plantPage'>
                 {handlePlants()}
             </div>
-            <div>
-                <h2>Posts</h2>
+            <h2>Posts</h2>
+            <div className='postPage'>
                 {handlePosts()}
             </div>
-            <button onClick={handleClick}>Check User</button>
         </div>
     )
 }

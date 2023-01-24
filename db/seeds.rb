@@ -32,9 +32,9 @@ plant8 = Plant.create(user: red, name: "Bushy Plant", image: "https://i.imgur.co
 plant9 = Plant.create(user: red, name: "Variegated Rubber Leaf", image: "https://i.imgur.com/xVKwsHX.jpg", watered: true, status: "Watered this this morning", frequency: 1, watered_at: Time.now)
 puts "seeded plants"
 
-post1 = Post.create(user: rep, title: "Post1", image: "Post1", post_body: "Here is the first post")
-post2 = Post.create(user: ryan, title: "Post2", image: "Post2", post_body: "Here is the second post")
-post3 = Post.create(user: red, title: "Post3", image: "Post3", post_body: "Here is the third post")
+post1 = Post.create(user: rep, title: "How my Fiddle Leaf is Doing!", image: "https://i.imgur.com/hv43L5m.jpg", post_body: "My Fiddle Leaf Fig is doing super well! I keep seeing lots of growth and despite being known as a difficult plant to work with, it's given me no issues")
+post2 = Post.create(user: ryan, title: "The Monster that is a Monstera", image: "https://i.imgur.com/fKLf4dV.jpg", post_body: "Lately, my Monstera plant hasn't been needing much water, I guess a plant as big as it is can retain it for a while!")
+post3 = Post.create(user: red, title: "Truly my Knight in Shining Armor", image: "https://i.imgur.com/9BmjCKP.jpg", post_body: "This Silver Pothos is just to die for!")
 puts "seeded posts"
 
 tag1 = Tag.create(name: "Tag1")

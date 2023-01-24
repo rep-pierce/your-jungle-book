@@ -1,0 +1,12 @@
+.navBar {
+    background-color: rgb(75, 197, 69);
+    font-weight: 500;
+    color: black; 
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    height: 60px; 
+    gap: 50px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }

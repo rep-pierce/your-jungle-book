@@ -26,14 +26,13 @@ function SearchBar({ posts, search, setSearch }) {
         <div className='searchInputs'>
             <input type="text" value={search} onChange={handleSearch} />
             <div className='searchIcon'> 
-            {search.length === 0 ? <p>🔍</p> : <p onClick={handleClear} id="clearBtn" >X</p>}
-             
+                {search.length === 0 ? <p>🔍</p> : <p onClick={handleClear} id="clearBtn" >X</p>}
             </div>
         </div>
         {filteredData.length !== 0 && (<div className='dataResult'>
             {filteredData.slice(0, 15).map((value, key) => {
                 return (
-                <a className='dataItem' href={`/postview/${value.id}`} target="_blank" rel="noreferrer noopener"> 
+                <a className='dataItem' key={value.id} href={`/postpage/${value.id}`} target="_blank" rel="noreferrer noopener"> 
                     <p>{value.title}</p> 
                 </a>
                 )

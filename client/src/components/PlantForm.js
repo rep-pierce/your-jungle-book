@@ -72,8 +72,8 @@ function PlantForm({handleFile, formData, handleResets, handleChange, currentUse
                     <label htmlFor="status">Hows Your Plant Doing?</label>
                     <input type="text" name="status" value={formData.status} onChange={(e) => handleChange(e)} />
                 </div>
-                <div>
-                    <input type="submit" />
+                <div className='submitContainer'>
+                    <input className='button' type="submit" />
                 </div>
             </form>
         </div>

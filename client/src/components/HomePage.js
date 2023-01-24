@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import PostCard from './PostCard'
 import { Context } from '../contexts/Context'
+import "../css/HomePage.css"
 
 
 function HomePage() {
@@ -15,9 +16,11 @@ function HomePage() {
   }
 
   return (
-    <div>
+    <div className='homePage'>
       <h1>HomePage</h1>
-      {!posts ? null : renderPosts()}
+      <div className='postPage'>
+        {!posts ? null : renderPosts()}
+      </div>
     </div>
   )
 }

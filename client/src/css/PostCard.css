@@ -1,0 +1,25 @@
+.postCard {
+    background-color: #feffaf;
+    width: 300px;
+    height: 50%;
+    box-shadow: rgba(0,0,0,0.403) 0px 10px 20px;
+    text-align: center;
+    margin: 60px;
+    font-family: playfair display;
+    padding: 0;
+    border: 4px solid #4F4F4F;
+}
+
+.postCard img {
+    width: 300px;
+    height: auto;
+}
+
+.creator {
+    margin: 3px;
+    cursor: pointer;
+}
+
+.postCard:hover {
+    border: 4px solid #25d61f
+}

@@ -1,5 +1,4 @@
 .searchInputs {
-    margin-top: 105px;
     display: flex;
   }
   
@@ -38,6 +37,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     overflow: hidden;
     overflow-y: auto;
+    position: absolute;
   }
   
   .dataResult::-webkit-scrollbar {

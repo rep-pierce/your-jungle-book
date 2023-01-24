@@ -2,6 +2,7 @@ import React, {useContext, useState} from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { Context } from "../contexts/Context";
 import SearchBar from './SearchBar'
+import "../css/NavBar.css"
 
 
 function NavBar() {
@@ -33,8 +34,10 @@ function NavBar() {
 	}
 
 	return (
-		<div className="navbar">
-			{!currentUser ? null : <h4>Welcome {currentUser.name} </h4>}
+		<div className="navBar">
+			<div>
+				{!currentUser ? null : <h4>Welcome {currentUser.name} </h4>}
+			</div>
 			<NavLink exact to="/">
 				Home
 			</NavLink>
@@ -50,7 +53,9 @@ function NavBar() {
 					{" "}Create Post{" "}
 				</NavLink>
 			)}
-			<SearchBar posts={posts} search={search} setSearch={setSearch} />
+			<div>
+				<SearchBar posts={posts} search={search} setSearch={setSearch} />
+			</div>
 			{!currentUser ? (
 				<NavLink to="/loginpage">
 					{" "}Log In{" "}
