@@ -39,6 +39,7 @@ function PostView() {
   return (
     <div>
         <h1>{post.title}</h1>
+        <img src={post.image} alt={post.title} />
         <h5 onClick={handleUserNav}>Post By: {post.user.username}</h5>
         {isUsers(post, inView)}
         <p>{!currentUser ? null : <button onClick={(e) => {

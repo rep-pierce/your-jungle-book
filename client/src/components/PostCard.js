@@ -23,7 +23,7 @@ function PostCard({post}) {
             <div onClick={handleNav}>
                 <h3>{post.title}</h3>
                 {!post.tags ? null : handleTags()}
-                <p>{post.image}</p>
+                <img src={post.image} alt={post.name} />
                 <p>{post.post_body}</p>
             </div>
             {!post.user? null : <p onClick={handleUserNav}>Post By: {post.user.username}</p>}
