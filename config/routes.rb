@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   delete "/likes/:user_id/:post_id", to: "likes#destroy"
   patch '/plants/:id/water', to: 'plants#water'
   patch '/plants/:id/water_with_post', to: 'plants#water_with_post'
+  patch '/plants/:id/image_update', to: 'plants#image_update'
+  patch '/plants/:id/image_with_post_update', to: 'plants#image_with_post_update'
 
   post "/signup", to: "users#create"
   get "/auth", to: "users#auth"

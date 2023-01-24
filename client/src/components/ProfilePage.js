@@ -79,6 +79,32 @@ function ProfilePage() {
         }
         
     }
+    const handleUpdateImg = async (e, plantId, makeUpdate, img, setRenderImgForm, setImg) => {
+        e.preventDefault()
+        let imgData = new FormData()
+        imgData.append("image", img)
+        // debugger
+        const response = await fetch(`/plants/${plantId}/${makeUpdate? "image_with_post_update" : "image_update"}`,{
+            method: "PATCH",
+            headers: {
+                Accepts:'application/json'
+            },
+            body: imgData
+        })
+        const updatedItems = await response.json()
+        setUserPlants(userPlants.map(plant => {
+            if (plant.id === plantId) {
+                setRenderImgForm("no")
+                setImg(null)
+                return updatedItems.plant
+            }
+            return plant
+          }))
+          if (updatedItems.post){
+              setPosts([updatedItems.post, ...posts])
+              setUserPosts([updatedItems.post, ...userPosts])
+          }
+    }
     
     // renders a loading div until our currentUser is populated
     if (!currentUser){
@@ -108,7 +134,7 @@ function ProfilePage() {
         return userComments.map(comment => <CommentCard key={comment.id + 1000000} comment={comment} />)
     }
     function handleUserPlants(){
-        return userPlants.map(plant => <PlantCard handleWatering={handleWatering} key={plant.id + 1000000} plant={plant} />)
+        return userPlants.map(plant => <PlantCard handleUpdateImg={handleUpdateImg} handleWatering={handleWatering} key={plant.id + 1000000} plant={plant} />)
     }
     function handleUserLikes(){
         return userLikes.map(post => <PostCard key={post.id + 1000000000} post={post} />)
