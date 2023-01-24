@@ -33,7 +33,7 @@ function SearchBar({ posts, search, setSearch }) {
         {filteredData.length !== 0 && (<div className='dataResult'>
             {filteredData.slice(0, 15).map((value, key) => {
                 return (
-                <a className='dataItem' href={`/posts/${value.id}`} target="_blank" rel="noreferrer noopener"> 
+                <a className='dataItem' href={`/postview/${value.id}`} target="_blank" rel="noreferrer noopener"> 
                     <p>{value.title}</p> 
                 </a>
                 )

@@ -13,10 +13,10 @@ function PostCard({post}) {
     
     // navigates you to a the posts view
     function handleNav(){
-        history.push(`/posts/${post.id}`)
+        history.push(`/postpage/${post.id}`)
     }
     function handleUserNav(){
-        history.push(`/users/${post.user.id}`)
+        history.push(`/userpage/${post.user.id}`)
     }
     return (
         <div>

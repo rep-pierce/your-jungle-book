@@ -29,7 +29,7 @@ function PostView() {
       return post.tags.map(tag => <h6 key={Math.random()*1000000}>{tag.name}</h6>)
     }
     function handleUserNav(){
-      history.push(`/users/${post.user.id}`)
+      history.push(`/userpage/${post.user.id}`)
     }
 
     // another stop precaution that forces our website to wait until out post is loaded
