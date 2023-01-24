@@ -23,7 +23,7 @@ function App() {
           <Route path="/newpost">
             <NewPostPage />
           </Route>
-          <Route path="/postview/:id">
+          <Route path="/postpage/:id">
             <PostView />
           </Route>
           <Route path="/userpage/:id">
