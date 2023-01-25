@@ -7,6 +7,8 @@ import ProfilePage from "./components/ProfilePage";
 import NewPostPage from "./components/NewPostPage";
 import PostView from "./components/PostView";
 import UserPage from "./components/UserPage";
+import "./css/App.css"
+
 
 function App() {
 
