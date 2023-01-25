@@ -1,0 +1,50 @@
+.postView {
+    justify-content: center;
+    text-align: center;
+    margin: 60px;
+    font-family: playfair display;
+    padding: 0;
+}
+
+.postView button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.postView button:hover {
+    background-color: #60d364;
+}
+
+.postView img {
+    width: 500px;
+    height: auto;
+}
+
+.postView .creator {
+    width: 150px;
+    margin: auto;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: larger;
+}
+
+.postView .creator:hover {
+    color: rgb(0, 255, 0);
+    text-decoration: underline;
+}
+
+.bodyContainer {
+    margin: auto;
+    width: 500px;
+}
+
+.postBody {
+    font-size: x-large;
+}

@@ -82,7 +82,11 @@ const ContextProvider = (props) => {
         if (!pst.user || !currentUser){
             return null
         }else {
-            return pst.user.id === currentUser.id ? <button onClick={() => handleDeletePost(pst, inView)}>Delete</button> : null
+            return pst.user.id === currentUser.id ? 
+            <div>
+                <button onClick={() => handleDeletePost(pst, inView)}>Delete Post</button> 
+            </div>
+            : null
         }
     }
 

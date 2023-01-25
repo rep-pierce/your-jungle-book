@@ -1,5 +1,6 @@
 import React, {useState, useContext} from 'react'
 import { Context } from '../contexts/Context'
+import "../css/CommentForm.css"
 
 function CommentForm({pID, setErrors}) {
     const [comment, setComment] = useState("")
@@ -31,11 +32,10 @@ function CommentForm({pID, setErrors}) {
     }
     
     return (
-        <div>
+        <div className='commentFormContainer'>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="comment">Comment:{" "}</label>
-                    <input type="text" name="comment" value={comment} onChange={handleChange} />
+                    <input type="text" placeholder='comment' name="comment" value={comment} onChange={handleChange} />
                 </div>
                 <div>
                     <button type="submit" value="Login">Submit</button>

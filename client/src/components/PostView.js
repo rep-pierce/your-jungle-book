@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { Context } from '../contexts/Context';
 import CommentCard from './CommentCard';
 import CommentForm from './CommentForm';
+import "../css/PostView.css"
 
 function PostView() {
     const { id } = useParams()
@@ -37,26 +38,28 @@ function PostView() {
         return <div>Loading...</div>
     }
   return (
-    <div>
+    <div className='postView'>
         <h1>{post.title}</h1>
         <img src={post.image} alt={post.title} />
-        <h5 onClick={handleUserNav}>Post By: {post.user.username}</h5>
-        {isUsers(post, inView)}
+        <h5 onClick={handleUserNav} className="creator">By: {post.user.username}</h5>
         <p>{!currentUser ? null : <button onClick={(e) => {
           handleLikes(e, post)
           userLikes.some(pst => pst.id === post.id) ? post.likes-- : post.likes++ 
-          }}>{userLikes.some(pst => pst.id === post.id) ? "★" : "☆" }</button>} {post.likes}</p>
+        }}>{userLikes.some(pst => pst.id === post.id) ? "★" : "☆" }</button>} {post.likes}</p>
         {post.tags.length > 0 ? 
         <div>
           {handleTags()}
         </div> : null}
-        <h2>{post.post_body}</h2>
+        <div className='bodyContainer'>
+          <p className='postBody'>{post.post_body}</p>
+        </div>
         <h3>Comments</h3>
         {!currentUser ? null : <CommentForm pID={post.id} setErrors={setErrors} />}
         {!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}
-        <div>
+        <div className='commentContainer'>
             {post.comments.length > 0 ? handleComments() : <h4>No Comments on this Post yet!</h4>}
         </div>
+        {isUsers(post, inView)}
     </div>
   )
 }

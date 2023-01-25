@@ -1,0 +1,10 @@
+.commentCard {
+    background-color: #feffaf;
+    width: 300px;
+    height: auto;
+    padding: 5px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: rgba(0,0,0,0.403) 0px 10px 20px;
+}

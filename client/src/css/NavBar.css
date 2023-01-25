@@ -9,4 +9,20 @@
     gap: 50px;
     margin-bottom: 50px;
     margin-top: 50px;
-  }
+}
+
+.navBar button {
+    background-color: rgb(75, 197, 69);
+    border: none;
+    color: white;
+    height: 60px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.navBar button:hover {
+  background-color: rgb(99, 255, 91);
+}

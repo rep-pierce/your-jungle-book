@@ -174,6 +174,13 @@ function ProfilePage() {
     function changeDispPost(){
         setDisplay("posts")
     }
+    function handleClassName(){
+        if (display === "posts" || display === "likes"){
+            return "postPage"
+        }else {
+            return "commentContainer"
+        }
+    }
 
   return (
     <div className='profileContainer'>
@@ -192,7 +199,7 @@ function ProfilePage() {
             <button onClick={changeDispComment}>See Your Comments</button>
             <button onClick={changeDispLike}>See Liked Posts</button>
         </div>
-        <div className='postPage'>
+        <div className={handleClassName()}>
             {handleDisplay()}
         </div>
     </div>
