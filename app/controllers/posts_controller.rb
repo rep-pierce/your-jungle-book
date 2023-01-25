@@ -10,11 +10,19 @@ class PostsController < ApplicationController
     end
 
     def create
-        post = Post.create!(post_params)
-        params[:posts_plants_ids].each do |plant|
-            post.posts_plants.create(plant_id: plant)
+        if params[:image] != "null"
+            file = params[:image]
+            img = Cloudinary::Uploader.upload(file, folder: "jungle_book", public_id: params[:name], unique_filename: false, overwrite: true)
+            img_url = img["url"]
+            post = Post.create!(user_id: params[:user_id], title: params[:title], image: img_url, post_body: params[:post_body])
+            params[:posts_plants_ids].each do |plant|
+                post.posts_plants.create(plant_id: plant)
+            end
+            render json: post, status: :created
+        else
+            post = Post.create!(user_id: params[:user_id], title: params[:title], post_body: params[:post_body])
+            render json: post, status: :created
         end
-        render json: post
     end
 
     def destroy

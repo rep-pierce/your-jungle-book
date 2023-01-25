@@ -3,7 +3,7 @@ import { Context } from '../contexts/Context'
 import MiniPlantCard from './MiniPlantCard'
 import "../css/PostForm.css"
 
-function PostForm({currentUser, formData, handleChange}) {
+function PostForm({currentUser, formData, handleChange, handleFile}) {
     const {
         userPlants, 
         addPlant, 
@@ -42,7 +42,7 @@ function PostForm({currentUser, formData, handleChange}) {
                 </div>
                 <div>
                     <label htmlFor="image">Image:</label>
-                    <input type="text" name="image" value={formData.image} onChange={(e) => handleChange(e)} />
+                    <input type="file" name="image" onChange={(e) => handleFile(e)} />
                 </div>
                 <div>
                     <label htmlFor="post_body">Body:</label>

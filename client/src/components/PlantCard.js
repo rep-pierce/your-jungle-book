@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react'
 import { Context } from '../contexts/Context'
 import "../css/PlantCard.css"
+import placeholder from "../images/placeholder-image.png";
 
 function PlantCard({plant, handleWatering, handleUpdateImg}) {
   const {isUsersPlant} = useContext(Context)
@@ -71,15 +72,23 @@ function PlantCard({plant, handleWatering, handleUpdateImg}) {
 
   return (
     <div className='plantCard'>
-        <h3>{plant.name}</h3>
         {updatePost()}
-        <img src={plant.image} alt={plant.name} />
-        <p>{plant.status}</p>
-        {
-        plant.watered? 
-        <p>Last Watered: {plant.watered_at.slice(0, 10)}</p> : 
-        handleButtonRender()
-        }
+        <div>
+          {!plant.image? <img src={placeholder} alt="placeholder" /> :<img src={plant.image} alt={plant.name} />}
+        </div>
+        <div className='plantName'>
+          <h3>{plant.name}</h3>
+        </div>
+        <div>
+          <p>{plant.status}</p>
+        </div>
+        <div className='plantButtons'>
+          {
+          plant.watered? 
+          <p>Last Watered: {plant.watered_at.slice(0, 10)}</p> : 
+          handleButtonRender()
+          }
+        </div>
     </div>
   )
 }

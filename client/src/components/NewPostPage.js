@@ -14,6 +14,14 @@ function NewPostPage() {
 			[name]: value,
 		}));
 	}
+    function handleFile(e){
+        const file = e.target.files[0]
+        const name = e.target.name
+        setPostForm((postForm) => ({
+            ...postForm,
+            [name]: file,
+        }))
+    }
 
     // stops the page from rendering if our currentUser isn't currently present
     if (!currentUser){
@@ -21,7 +29,7 @@ function NewPostPage() {
     }
     return (
         <div>
-            <PostForm currentUser={currentUser} formData={postForm} handleChange={handleChange} />
+            <PostForm currentUser={currentUser} handleFile={handleFile} formData={postForm} handleChange={handleChange} />
         </div>
     )
 }

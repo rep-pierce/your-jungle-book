@@ -32,11 +32,14 @@ function NavBar() {
 			})
 			.then(history.push('/'));
 	}
+	function handleNavUser(){
+		history.push(`/userpage/${currentUser.id}`)
+	}
 
 	return (
 		<div className="navBar">
 			<div>
-				{!currentUser ? null : <h4>Welcome {currentUser.name} </h4>}
+				{!currentUser ? null : <h4 onClick={handleNavUser}>Welcome {currentUser.name} </h4>}
 			</div>
 			<NavLink exact to="/">
 				Home

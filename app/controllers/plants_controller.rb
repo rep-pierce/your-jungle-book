@@ -37,11 +37,16 @@ class PlantsController < ApplicationController
     end
     
     def create
-        file = params[:image]
-        img = Cloudinary::Uploader.upload(file, folder: "jungle_book", public_id: params[:name], unique_filename: false, overwrite: true)
-        img_url = img["url"]
-        plant = Plant.create!(user_id: params[:user_id], name: params[:name], image: img_url, watered: params[:watered], status: params[:status], frequency: params[:frequency])
-        render json: plant, status: :created
+        if params[:image] != "null"
+            file = params[:image]
+            img = Cloudinary::Uploader.upload(file, folder: "jungle_book", public_id: params[:name], unique_filename: false, overwrite: true)
+            img_url = img["url"]
+            plant = Plant.create!(user_id: params[:user_id], name: params[:name], image: img_url, watered: params[:watered], status: params[:status], frequency: params[:frequency])
+            render json: plant, status: :created
+        else
+            plant = Plant.create!(user_id: params[:user_id], name: params[:name], watered: params[:watered], status: params[:status], frequency: params[:frequency])
+            render json: plant, status: :created
+        end
     end
     private
 

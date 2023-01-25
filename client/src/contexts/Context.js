@@ -17,7 +17,7 @@ const ContextProvider = (props) => {
     const [post, setPost] = useState(null)
     const [postForm, setPostForm] = useState({
         title: "",
-		image: "",
+		image: null,
         post_body: ""
     })
 
@@ -37,19 +37,19 @@ const ContextProvider = (props) => {
     // the post information also contains the selected plants and are sent to the backend through the posts_plants_ids parameter
     function handleNewPost(e){
         e.preventDefault()
-        const newPost = {
-            user_id: currentUser.id,
-            title: postForm.title,
-            image: postForm.image,
-            post_body: postForm.post_body,
-            posts_plants_ids: selectedPlant
-        }
+        let data = new FormData() 
+        data.append("user_id", currentUser.id,)
+        data.append("title", postForm.title,)
+        data.append("image", postForm.image,)
+        data.append("post_body", postForm.post_body,)
+        data.append("posts_plants_ids", selectedPlant)
+        
         fetch("/posts",{
             method: "POST",
             headers: {
-                'Content-Type':'application/json'
+                Accepts:'application/json'
             },
-            body: JSON.stringify(newPost)
+            body: data
         }).then((r) => {
             if (r.ok) {
                 r.json().then((post) => {

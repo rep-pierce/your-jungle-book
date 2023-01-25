@@ -12,21 +12,7 @@ function PlantForm({handleFile, formData, handleResets, handleChange, currentUse
         data.append("watered", formData.watered)
         data.append("frequency", parseInt(formData.frequency))
         data.append("status", formData.status)
-        // fetch("/upload",{
-        //     method: "POST",
-        //     headers: {
-        //         Accepts: "application/json"
-        //     },
-        // })
-        // const plant = {
-        //     user_id: currentUser.id,
-        //     name: formData.name,
-        //     image: formData.image,
-        //     watered: formData.watered,
-        //     frequency: parseInt(formData.frequency),
-        //     status: formData.status
-        // }
-        // debugger
+
         fetch("/plants",{
             method: "POST",
             headers: {
@@ -73,7 +59,7 @@ function PlantForm({handleFile, formData, handleResets, handleChange, currentUse
                     <input type="text" name="status" value={formData.status} onChange={(e) => handleChange(e)} />
                 </div>
                 <div className='submitContainer'>
-                    <input className='button' type="submit" />
+                    <input className='newPlantButton' type="submit" />
                 </div>
             </form>
         </div>
