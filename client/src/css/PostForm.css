@@ -1,0 +1,8 @@
+.miniCardContainer {
+    margin-left: 50px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding:0;
+}

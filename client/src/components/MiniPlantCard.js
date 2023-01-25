@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import "../css/MiniPlantCard.css"
 
 function MiniPlantCard({plant, selectedPlant, setSelectedPlant}) {
     const [inSelected, setInSelected] = useState("no")
@@ -20,10 +21,10 @@ function MiniPlantCard({plant, selectedPlant, setSelectedPlant}) {
     }
 
     return (
-      <div>
+      <div onClick={handleClick} className={inSelected === "yes"? 'miniCardSelected' : 'miniCardUnselected'}>
         <p>Name: {plant.name}</p>
-        <p>Image: {plant.image}</p>
-        <button onClick={handleClick}>{inSelected === "yes"? "Remove From Post" : "Add to Post"}</button>
+        <img src={plant.image} alt={plant.name} />
+        {/* <button onClick={handleClick}>{inSelected === "yes"? "Remove From Post" : "Add to Post"}</button> */}
       </div>
     )
 }

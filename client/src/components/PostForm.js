@@ -1,6 +1,7 @@
 import React, { useContext} from 'react'
 import { Context } from '../contexts/Context'
 import MiniPlantCard from './MiniPlantCard'
+import "../css/PostForm.css"
 
 function PostForm({currentUser, formData, handleChange}) {
     const {
@@ -53,7 +54,12 @@ function PostForm({currentUser, formData, handleChange}) {
             </form>
             <div>
                 <button onClick={handleAddPlant}>{addPlant === "yes"? "Cancel" : "Add Plants to Post"}</button>
-                {addPlant === "yes"? handleMiniCards() : null }
+                {addPlant === "yes"? <p>Click To Select/Deselect</p> : null }
+                {addPlant === "yes"? 
+                <div className="miniCardContainer">
+                    {handleMiniCards()} 
+                </div>
+                : null }
             </div>
             {!postErrors ? null : postErrors.map((error) => <p key={error}>{error}</p>)}
 
