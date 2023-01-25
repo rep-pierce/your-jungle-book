@@ -24,7 +24,6 @@ function MiniPlantCard({plant, selectedPlant, setSelectedPlant}) {
       <div onClick={handleClick} className={inSelected === "yes"? 'miniCardSelected' : 'miniCardUnselected'}>
         <p>Name: {plant.name}</p>
         <img src={plant.image} alt={plant.name} />
-        {/* <button onClick={handleClick}>{inSelected === "yes"? "Remove From Post" : "Add to Post"}</button> */}
       </div>
     )
 }

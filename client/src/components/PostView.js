@@ -4,6 +4,7 @@ import { Context } from '../contexts/Context';
 import CommentCard from './CommentCard';
 import CommentForm from './CommentForm';
 import "../css/PostView.css"
+import MiniPlantView from './MiniPlantView';
 
 function PostView() {
     const { id } = useParams()
@@ -32,6 +33,9 @@ function PostView() {
     function handleUserNav(){
       history.push(`/userpage/${post.user.id}`)
     }
+    function handlePlants(){
+      return post.plants.map((plant) => <MiniPlantView key={Math.random() * 1000000} plant={plant} />)
+    }
 
     // another stop precaution that forces our website to wait until out post is loaded
     if (!post){
@@ -53,7 +57,14 @@ function PostView() {
         <div className='bodyContainer'>
           <p className='postBody'>{post.post_body}</p>
         </div>
-        <h3>Comments</h3>
+          {!post.plants? null : 
+            (<div>
+              <h2>This Post is about these Plants:</h2>
+              <div className='miniCardContainer'>
+                {handlePlants()}
+              </div>
+            </div>)}
+        <h2>Comments</h2>
         {!currentUser ? null : <CommentForm pID={post.id} setErrors={setErrors} />}
         {!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}
         <div className='commentContainer'>

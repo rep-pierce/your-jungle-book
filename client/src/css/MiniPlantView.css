@@ -1,0 +1,16 @@
+.miniCard {
+    background-color: #8eff8e;
+    width: 150px;
+    height: 50%;
+    box-shadow: rgba(0,0,0,0.403) 0px 10px 20px;
+    text-align: center;
+    border: 4px solid #4F4F4F;
+    margin: 60px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.miniCard img {
+    width: 150px;
+    height: auto;
+}

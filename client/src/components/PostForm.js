@@ -46,7 +46,7 @@ function PostForm({currentUser, formData, handleChange}) {
                 </div>
                 <div>
                     <label htmlFor="post_body">Body:</label>
-                    <input type="text" name="post_body" value={formData.post_body} onChange={(e) => handleChange(e)} />
+                    <textarea type="text" name="post_body" value={formData.post_body} onChange={(e) => handleChange(e)} />
                 </div>
                 <div>
                     <input type="submit" />
@@ -57,7 +57,7 @@ function PostForm({currentUser, formData, handleChange}) {
                 {addPlant === "yes"? <p>Click To Select/Deselect</p> : null }
                 {addPlant === "yes"? 
                 <div className="miniCardContainer">
-                    {handleMiniCards()} 
+                    {handleMiniCards()}
                 </div>
                 : null }
             </div>
