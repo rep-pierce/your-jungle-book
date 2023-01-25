@@ -7,6 +7,11 @@ class PlantsController < ApplicationController
         plant = Plant.find(params[:id])
         render json: plant
     end
+    def destroy
+        plant = Plant.find(params[:id])
+        plant.destroy
+        head :no_content
+    end
     def water_with_post
         plant = Plant.find(params[:id])
         post = plant.posts.create(user_id: plant.user.id, title: "#{plant.user.username} watered #{plant.name}", image: plant.image, post_body: "#{plant.user.username} just watered their plant today!")

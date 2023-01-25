@@ -43,7 +43,9 @@ function PostView() {
     }
   return (
     <div className='postView'>
-        <h1>{post.title}</h1>
+        <div className='homePageHeader'>
+            <h1>{post.title}</h1>
+        </div>
         <img src={post.image} alt={post.title} />
         <h5 onClick={handleUserNav} className="creator">By: {post.user.username}</h5>
         <p>{!currentUser ? null : <button onClick={(e) => {

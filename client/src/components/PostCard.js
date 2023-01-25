@@ -21,7 +21,7 @@ function PostCard({post}) {
             <div className='creatorContainer'>
                 {!post.user? null : <p className='creator' onClick={handleUserNav}>{post.user.username}</p>}
             </div>
-            <div onClick={handleNav}>
+            <div className='navContainer' onClick={handleNav}>
                 <div>
                     {!post.image? <img src={placeholder} alt="placeholder" /> : <img src={post.image} alt={post.name} />}
                 </div>

@@ -23,6 +23,14 @@ function PlantCard({plant, handleWatering, handleUpdateImg}) {
       setRenderImgForm("yes")
     }
   }
+
+  function handleDeletePlant(){
+    fetch(`/plants/${plant.id}`, {
+      method: "DELETE",
+    })
+    window.location.reload()
+  }
+
   function handleMakeUpdate(){
     setMakeUpdate(!makeUpdate)
   }
@@ -45,8 +53,11 @@ function PlantCard({plant, handleWatering, handleUpdateImg}) {
   function updatePost(){
     return isUsersPlant(plant)? 
       (
-       <div>
-         <button onClick={handleImgForm}>{renderImgForm === "yes"? "X" : "Update Image"}</button>
+        <div>
+          <div>
+            <button onClick={handleDeletePlant}>Delete Plant</button>
+            <button onClick={handleImgForm}>{renderImgForm === "yes"? "X" : "Update Image"}</button>
+          </div>
          {renderImgForm === "no"? 
          null :
          (

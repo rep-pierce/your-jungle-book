@@ -1,7 +1,7 @@
 .postView {
     justify-content: center;
     text-align: center;
-    margin: 60px;
+    margin: 0px;
     font-family: playfair display;
     padding: 0;
 }
@@ -25,6 +25,7 @@
 .postView img {
     width: 500px;
     height: auto;
+    margin-top: 25px;
 }
 
 .postView .creator {

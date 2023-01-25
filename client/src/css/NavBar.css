@@ -7,19 +7,45 @@
     justify-content: center; 
     height: 60px; 
     gap: 50px;
-    margin-bottom: 50px;
+    border: 4px solid #feffaf;
+}
+
+.navBar h4 {
+  font-family: 'tribecaFont';
+  font-weight: normal;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.navBar .navLink {
+    font-family: 'tribecaFont';
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    height: 100%; 
+    color: #feffaf;
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.navBar a:hover {
+  background-color: rgb(99, 255, 91);
 }
 
 .navBar button {
     background-color: rgb(75, 197, 69);
     border: none;
-    color: white;
+    color: #feffaf;
     height: 60px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 5px;
+    font-family: 'tribecaFont';
+    font-weight: lighter;
+    cursor: pointer;
 }
 
 .navBar button:hover {

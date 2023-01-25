@@ -32,7 +32,9 @@ function UserPage() {
 
     return (
         <div className='profileContainer'>
-            <h1>Welcome to {user.username}'s Page</h1>
+            <div className='userpageWelcome'>
+                <h1>Welcome to {user.username}'s Page</h1>
+            </div>
             <h2>Plants</h2>
             <div className='plantPage'>
                 {handlePlants()}

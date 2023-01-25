@@ -41,18 +41,18 @@ function NavBar() {
 			<div>
 				{!currentUser ? null : <h4 onClick={handleNavUser}>Welcome {currentUser.name} </h4>}
 			</div>
-			<NavLink exact to="/">
+			<NavLink className='navLink' exact to="/">
 				Home
 			</NavLink>
 			{!currentUser ? null :
 			(
-				<NavLink to="/profilepage">
+				<NavLink className='navLink'  to="/profilepage">
 					{" "}Profile{" "}
 				</NavLink>
 			)}
 			{!currentUser ? null :
 			(
-				<NavLink to="/newpost">
+				<NavLink className='navLink'  to="/newpost">
 					{" "}Create Post{" "}
 				</NavLink>
 			)}
@@ -60,7 +60,7 @@ function NavBar() {
 				<SearchBar posts={posts} search={search} setSearch={setSearch} />
 			</div>
 			{!currentUser ? (
-				<NavLink to="/loginpage">
+				<NavLink className='navLink' to="/loginpage">
 					{" "}Log In{" "}
 				</NavLink>
 			) : (

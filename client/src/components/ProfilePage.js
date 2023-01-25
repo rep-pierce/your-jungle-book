@@ -155,12 +155,14 @@ function ProfilePage() {
 
     // this function handles a display state variable that chooses between showing the users posts, comments, plants, and likes
     function handleDisplay(){
-        if (display === "likes"){
+        if (display === "posts"){
+            return handleUserPosts()
+        }else if(display === "likes"){
             return handleUserLikes()
         }else if (display === "comments"){
             return handleUserComments()
         }else {
-            return handleUserPosts()
+            return handleUserPlants()
         }
     }
 
@@ -174,11 +176,16 @@ function ProfilePage() {
     function changeDispPost(){
         setDisplay("posts")
     }
+    function changeDispPlant(){
+        setDisplay("plants")
+    }
     function handleClassName(){
         if (display === "posts" || display === "likes"){
             return "postPage"
-        }else {
+        }else if (display === "comments"){
             return "commentContainer"
+        }else {
+            return "plantPage"
         }
     }
 
@@ -191,11 +198,9 @@ function ProfilePage() {
             {newPlant === "yes"? <PlantForm handleFile={handleFile} handleResets={handleResets} setUserPlants={setUserPlants} userPlants={userPlants} setNewPlant={setNewPlant} currentUser={currentUser} setErrors={setErrors} formData={formData} handleChange={handleChange} /> : null}
             {!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}
         </div>
-        <div className='plantPage'>
-            {handleUserPlants()}
-        </div>
         <div className='displayContainer'>
             <button onClick={changeDispPost}>See Your Posts</button>
+            <button onClick={changeDispPlant}>See Your Plants</button>
             <button onClick={changeDispComment}>See Your Comments</button>
             <button onClick={changeDispLike}>See Liked Posts</button>
         </div>

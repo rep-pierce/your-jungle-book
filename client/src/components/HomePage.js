@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import PostCard from './PostCard'
 import { Context } from '../contexts/Context'
 import "../css/HomePage.css"
+import "../fonts/TribecaRegular.ttf"
 
 
 function HomePage() {
@@ -17,7 +18,9 @@ function HomePage() {
 
   return (
     <div className='homePage'>
-      <h1>HomePage</h1>
+      <div className='homePageHeader'>
+        <h1>Your Jungle Book</h1>
+      </div>
       <div className='postPage'>
         {!posts ? null : renderPosts()}
       </div>
