@@ -24,7 +24,7 @@
 
 .postFormContainer form {
     width: 90%;
-    margin-top: 10px;
+    margin-top: 0px;
     display: flex;
     flex-direction: column;
 }

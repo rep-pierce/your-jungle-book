@@ -32,7 +32,7 @@ function PlantForm({handleFile, formData, handleResets, handleChange, currentUse
         })
     }
     return (
-        <div>
+        <div className='postFormContainer'>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="name">Name:</label>
@@ -59,7 +59,7 @@ function PlantForm({handleFile, formData, handleResets, handleChange, currentUse
                     <input type="text" name="status" value={formData.status} onChange={(e) => handleChange(e)} />
                 </div>
                 <div className='submitContainer'>
-                    <input className='newPlantButton' type="submit" />
+                    <input className='button' type="submit" />
                 </div>
             </form>
         </div>
