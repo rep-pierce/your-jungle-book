@@ -4,6 +4,7 @@ import PlantCard from './PlantCard';
 import PostCard from './PostCard';
 import "../css/ProfilePage.css"
 import "../css/HomePage.css"
+import UserCard from './UserCard';
 
 function UserPage() {
     const {id} = useParams()
@@ -36,6 +37,7 @@ function UserPage() {
             <div className='userpageWelcome'>
                 <h1>Welcome to {user.username}'s Page</h1>
             </div>
+            <UserCard user={user} />
             <h2>Plants</h2>
             <div className='plantPage'>
                 {handlePlants()}

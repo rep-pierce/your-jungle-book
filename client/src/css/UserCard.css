@@ -1,0 +1,48 @@
+.userCardContainer {
+    margin-top: 15px;
+    height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.backgroundForUser {
+    background: linear-gradient(#47ff50, #b6fd95);
+    margin-top: 15px;
+    padding: 5px;
+    height: 210px;
+    width: 150px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 4px solid #4F4F4F;
+}
+
+.userCardContainer .avatarContainer {
+    padding: 0;
+    background-color: #8eff8e;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 4px solid #feffaf;
+    margin-top: 10px;
+    
+}
+.userCardContainer .avatarContainer:hover {
+    border-color: #8eff8e;
+}
+
+.userCardContainer .avatarContainer img {
+    height: 100%;
+    border-radius: 50%;
+}
+
+.backgroundForUser p {
+    margin-top: 3px;
+    margin-bottom: 10px
+}
+
