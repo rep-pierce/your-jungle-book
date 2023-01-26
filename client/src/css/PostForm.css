@@ -111,6 +111,7 @@
     margin-right: 60px;
     margin-top: 15px;
     margin-bottom: 15px;
+    border-radius: 10px;
 }
 
 .miniCardSelected {
@@ -124,6 +125,7 @@
     margin-right: 60px;
     margin-top: 25px;
     margin-bottom: 25px;
+    border-radius: 10px;
 }
 
 .miniCardUnselected:hover {
@@ -137,7 +139,6 @@
     max-width: 150px;
     min-height: auto;
     height: 200px;
-    border-radius: 10px;
 }
 
 .miniCardSelected img {
@@ -147,5 +148,4 @@
     max-width: 150px;
     min-height: auto;
     height: 200px;
-    border-radius: 10px;
 }

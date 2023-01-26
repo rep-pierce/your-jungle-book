@@ -42,7 +42,7 @@ const ContextProvider = (props) => {
         data.append("title", postForm.title,)
         data.append("image", postForm.image,)
         data.append("post_body", postForm.post_body,)
-        data.append("posts_plants_ids", selectedPlant)
+        data.append("posts_plants_ids", JSON.stringify(selectedPlant))
         
         fetch("/posts",{
             method: "POST",

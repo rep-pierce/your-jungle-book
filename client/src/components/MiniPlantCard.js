@@ -10,7 +10,6 @@ function MiniPlantCard({plant, selectedPlant, setSelectedPlant}) {
     function handleClick(){
       if (inSelected === "yes"){
         setInSelected("no")
-        console.log(selectedPlant)
         const newSelected = selectedPlant.filter(plnt => plnt !== plant.id)
         setSelectedPlant(newSelected)
       }else {

@@ -26,7 +26,7 @@ function PostForm({currentUser, formData, handleChange, handleFile}) {
 
     // renders mini plant cards rather than full plant cards to link to a post
     function handleMiniCards(){
-        return userPlants.map(plant => <div><MiniPlantCard key={plant.id} plant={plant} setSelectedPlant={setSelectedPlant} selectedPlant={selectedPlant} /></div>)
+        return userPlants.map(plant => <MiniPlantCard key={plant.id} plant={plant} setSelectedPlant={setSelectedPlant} selectedPlant={selectedPlant} />)
     }
 
     // renders a loading div while we wait for userPlants to get populated

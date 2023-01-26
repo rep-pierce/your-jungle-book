@@ -27,8 +27,9 @@ function ProfilePage() {
         frequency: 0,
     })
     const [errors, setErrors] = useState([]);
-    const [display, setDisplay] = useState('posts')
+    const [display, setDisplay] = useState('plants')
     const [newPlant, setNewPlant] = useState('no')
+    const inUser = false
 
     // dynamically handles the formData and allows for controlled inputs
     function handleChange(e) {
@@ -93,7 +94,6 @@ function ProfilePage() {
         e.preventDefault()
         let imgData = new FormData()
         imgData.append("image", img)
-        // debugger
         const response = await fetch(`/plants/${plantId}/${makeUpdate? "image_with_post_update" : "image_update"}`,{
             method: "PATCH",
             headers: {
@@ -147,7 +147,7 @@ function ProfilePage() {
         return userComments.map(comment => <CommentCard key={comment.id + 1000000} comment={comment} />)
     }
     function handleUserPlants(){
-        return userPlants.map(plant => <PlantCard handleUpdateImg={handleUpdateImg} handleWatering={handleWatering} key={plant.id + 1000000} plant={plant} />)
+        return userPlants.map(plant => <PlantCard inUser={inUser} handleUpdateImg={handleUpdateImg} handleWatering={handleWatering} key={plant.id + 1000000} plant={plant} />)
     }
     function handleUserLikes(){
         return userLikes.map(post => <PostCard key={post.id + 1000000000} post={post} />)
@@ -199,8 +199,8 @@ function ProfilePage() {
             {!errors ? null : errors.map((error) => <p key={error}>{error}</p>)}
         </div>
         <div className='displayContainer'>
-            <button onClick={changeDispPost}>See Your Posts</button>
             <button onClick={changeDispPlant}>See Your Plants</button>
+            <button onClick={changeDispPost}>See Your Posts</button>
             <button onClick={changeDispComment}>See Your Comments</button>
             <button onClick={changeDispLike}>See Liked Posts</button>
         </div>

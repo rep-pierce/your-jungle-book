@@ -15,7 +15,7 @@ class PostsController < ApplicationController
             img = Cloudinary::Uploader.upload(file, folder: "jungle_book", public_id: params[:name], unique_filename: false, overwrite: true)
             img_url = img["url"]
             post = Post.create!(user_id: params[:user_id], title: params[:title], image: img_url, post_body: params[:post_body])
-            params[:posts_plants_ids].each do |plant|
+            JSON.parse(params[:posts_plants_ids]).each do |plant|
                 post.posts_plants.create(plant_id: plant)
             end
             render json: post, status: :created
@@ -34,6 +34,6 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.permit(:user_id, :title, :image, :post_body)
+        params.permit(:user_id, :title, :image, :post_body, :posts_plants_ids)
     end
 end

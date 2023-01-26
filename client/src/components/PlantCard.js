@@ -3,7 +3,7 @@ import { Context } from '../contexts/Context'
 import "../css/PlantCard.css"
 import placeholder from "../images/placeholder-image.png";
 
-function PlantCard({plant, handleWatering, handleUpdateImg}) {
+function PlantCard({plant, handleWatering, handleUpdateImg, inUser}) {
   const {isUsersPlant} = useContext(Context)
   const [makePost, setMakePost] = useState(true)
   const [renderImgForm, setRenderImgForm] = useState("no")
@@ -35,7 +35,7 @@ function PlantCard({plant, handleWatering, handleUpdateImg}) {
     setMakeUpdate(!makeUpdate)
   }
   function handleButtonRender(){
-    if (isUsersPlant(plant)){
+    if (isUsersPlant(plant) && !inUser){
       return (
         <div>
           <button onClick={ () => handleWatering(plant.id, makePost)}>Water Plant</button>
@@ -51,7 +51,7 @@ function PlantCard({plant, handleWatering, handleUpdateImg}) {
   }
   
   function updatePost(){
-    return isUsersPlant(plant)? 
+    return isUsersPlant(plant) && !inUser? 
       (
         <div>
           <div>
@@ -82,7 +82,7 @@ function PlantCard({plant, handleWatering, handleUpdateImg}) {
   
 
   return (
-    <div className='plantCard'>
+    <div className={inUser? 'plantCardUser' : 'plantCard'}>
         {updatePost()}
         <div>
           {!plant.image? <img src={placeholder} alt="placeholder" /> :<img src={plant.image} alt={plant.name} />}

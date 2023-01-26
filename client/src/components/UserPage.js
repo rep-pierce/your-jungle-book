@@ -18,9 +18,10 @@ function UserPage() {
 
         fetchData();
     }, [id]);
+    const inUser = true
 
     function handlePlants(){
-        return user.plants.map((plant) => <PlantCard key={plant.id + 1000000} plant={plant} />)
+        return user.plants.map((plant) => <PlantCard inUser={inUser} key={plant.id + 1000000} plant={plant} />)
     }
     function handlePosts(){
         return user.posts.map((post) => <PostCard key={post.id + 1000000000} post={post} />)
