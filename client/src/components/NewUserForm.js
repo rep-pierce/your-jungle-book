@@ -15,7 +15,6 @@ const NewUserForm = ({
         const user = {
             name: formData.name,
             age: formData.age,
-            email: formData.email,
             username: formData.username,
             password: formData.password,
             password_confirmation: formData.passwordConfirmation
@@ -38,7 +37,7 @@ const NewUserForm = ({
     }
     
     return(
-        <div>
+        <div className="logInForm">
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="name">Name:</label>
@@ -47,10 +46,6 @@ const NewUserForm = ({
                 <div>
                     <label htmlFor="age">Age:</label>
                     <input type="integer" name="age" value={formData.age} onChange={(e) => handleChange(e)} />
-                </div>
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <input type="text" name="email" value={formData.email} onChange={(e) => handleChange(e)} />
                 </div>
                 <div>
                     <label htmlFor="username">Username:</label>
@@ -64,8 +59,8 @@ const NewUserForm = ({
                     <label htmlFor="password_confirmation">Confirm Password:</label>
                     <input type="password" id="password_confirmation" name="passwordConfirmation" value={formData.passwordConfirmation} onChange={(e) => handleChange(e)} />
                 </div>
-                <div>
-                    <input type="submit" />
+                <div className="logInSubmit">
+                    <input type="submit" value="Create Account" className="button" />
                 </div>
             </form>
         </div>

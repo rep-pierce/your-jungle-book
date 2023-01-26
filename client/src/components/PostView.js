@@ -27,9 +27,7 @@ function PostView() {
     function handleComments(){
       return post.comments.map((comment) => <CommentCard key={Math.random()*1000000} comment={comment} />)
     }
-    function handleTags(){
-      return post.tags.map(tag => <h6 key={Math.random()*1000000}>{tag.name}</h6>)
-    }
+    
     function handleUserNav(){
       history.push(`/userpage/${post.user.id}`)
     }
@@ -52,10 +50,6 @@ function PostView() {
           handleLikes(e, post)
           userLikes.some(pst => pst.id === post.id) ? post.likes-- : post.likes++ 
         }}>{userLikes.some(pst => pst.id === post.id) ? "★" : "☆" }</button>} {post.likes}</p>
-        {post.tags.length > 0 ? 
-        <div>
-          {handleTags()}
-        </div> : null}
         <div className='bodyContainer'>
           <p className='postBody'>{post.post_body}</p>
         </div>

@@ -8,15 +8,13 @@
 User.destroy_all
 Post.destroy_all
 Plant.destroy_all
-Tag.destroy_all
-PostTag.destroy_all
 Comment.destroy_all
 Like.destroy_all
 PostsPlant.destroy_all
 
-rep = User.create(name: "Rep", age: 26, username: "Rep", password: "rep", image: "rep", email: "ryan1@gmail.com")
-ryan = User.create(name: "Ryan", age: 25, username: "Ryan", password: "ryan", image: "ryan", email: "ryan2@gmail.com")
-red = User.create(name: "Red", age: 28, username: "Red", password: "red", image: 'red', email: "ryan3@gmail.com")
+rep = User.create(name: "Rep", age: 26, username: "Rep", password: "rep")
+ryan = User.create(name: "Ryan", age: 25, username: "Ryan", password: "ryan")
+red = User.create(name: "Red", age: 28, username: "Red", password: "red")
 puts "seeded users"
 
 plant1 = Plant.create(user: rep, name: "Fiddle Leaf Fig", image: "https://i.imgur.com/hv43L5m.jpg", watered: true, status: "Watered this last night", frequency: 3, watered_at: Time.now)
@@ -36,16 +34,6 @@ post1 = Post.create(user: rep, title: "How my Fiddle Leaf is Doing!", image: "ht
 post2 = Post.create(user: ryan, title: "The Monster that is a Monstera", image: "https://i.imgur.com/fKLf4dV.jpg", post_body: "Lately, my Monstera plant hasn't been needing much water, I guess a plant as big as it is can retain it for a while!")
 post3 = Post.create(user: red, title: "Truly my Knight in Shining Armor", image: "https://i.imgur.com/9BmjCKP.jpg", post_body: "This Silver Pothos is just to die for!")
 puts "seeded posts"
-
-tag1 = Tag.create(name: "Tag1")
-tag2 = Tag.create(name: "Tag2")
-tag3 = Tag.create(name: "Tag3")
-puts "seeded tags"
-
-PostTag.create(post: post1, tag: tag1)
-PostTag.create(post: post2, tag: tag2)
-PostTag.create(post: post3, tag: tag3)
-puts "seeded pts"
 
 Comment.create(user: rep, post: post2, comment: "This is the first comment")
 Comment.create(user: ryan, post: post3, comment: "This is the second comment")

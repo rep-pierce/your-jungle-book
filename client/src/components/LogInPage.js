@@ -2,12 +2,12 @@ import React, {useState} from 'react'
 import LogInForm from './LogInForm';
 import NewUserForm from './NewUserForm';
 import { useHistory } from 'react-router-dom';
+import "../css/LogInPage.css"
 
 function LogInPage() {
     const [formData, setFormData] = useState({
 		name: "",
 		age: "",
-        email: "",
 		username: "",
 		password: "",
 		passwordConfirmation: "",
@@ -31,7 +31,6 @@ function LogInPage() {
 		setFormData({
 			name: "",
 			age: "",
-            email: "",
 			username: "",
 			password: "",
 			passwordConfirmation: "",
@@ -74,7 +73,7 @@ function LogInPage() {
 	};
 
   return (
-    <div>
+    <div className={display === "login"? 'formsContainer' : 'newFormsContainer'}>
 		<button onClick={handleNew}>
 			Create New User
 		</button>

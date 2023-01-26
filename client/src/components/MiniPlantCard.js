@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import "../css/MiniPlantCard.css"
 
 function MiniPlantCard({plant, selectedPlant, setSelectedPlant}) {
     const [inSelected, setInSelected] = useState("no")

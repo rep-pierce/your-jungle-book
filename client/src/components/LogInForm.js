@@ -49,7 +49,7 @@ function LoginForm({
 	}
 
 	return (
-		<div>
+		<div className="logInForm">
 			<form onSubmit={handleSubmit}>
 				<div>
 					<label htmlFor="username">
@@ -75,10 +75,8 @@ function LoginForm({
 						onChange={(e) => handleChange(e)}
 					/>
 				</div>
-				<div>
-					<button type="submit" value="Login">
-						Login
-					</button>
+				<div className="logInSubmit">
+					<input className="button" type="submit" value="Login"/>
 				</div>
 			</form>
 		</div>
