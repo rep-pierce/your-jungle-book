@@ -55,10 +55,8 @@ function PostForm({currentUser, formData, handleChange, handleFile}) {
                 </form>
             </div>
             <div className={addPlant === "yes" ? 'yesAddPlants' : 'addPlantContainer'}>
-                <div>
-                    <button className='button' onClick={handleAddPlant}>{addPlant === "yes"? "Cancel" : "Add Plants to Post"}</button>
-                    {addPlant === "yes"? <p>Click To Select/Deselect</p> : null }
-                </div>
+                <button className='button' onClick={handleAddPlant}>{addPlant === "yes"? "Cancel" : "Add Plants to Post"}</button>
+                {addPlant === "yes"? <p>Click To Select/Deselect</p> : null }
                 {addPlant === "yes"? 
                 <div className="miniCardContainer">
                     {handleMiniCards()}

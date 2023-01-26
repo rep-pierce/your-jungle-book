@@ -69,22 +69,35 @@
 }
 
 .addPlantContainer {
-    background-color: #feffaf;
+    background: linear-gradient(#feffaf, #b6fd95);
     margin-top: 15px;
+    margin-left: 25%;
+    margin-right: 25%;
     display: flex;
     justify-content: center;
+    border: 4px solid #60d364;
+    border-radius: 10px;
 }
 
 .addPlantContainer .button {
-    margin: 5px;
+    margin: 10px;
     border-radius: 5px;
 }
 
 .yesAddPlants {
-    background-color: #feffaf;
+    background: linear-gradient(#feffaf, #b6fd95);
     margin-top: 15px;
+    margin-left: 25%;
+    margin-right: 25%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 4px solid #60d364;
+    border-radius: 10px;
+}
+.yesAddPlants .button {
+    margin: 10px;
+    border-radius: 5px;
 }
 
 .miniCardUnselected {
@@ -96,8 +109,8 @@
     border: 4px solid #4F4F4F;
     margin-left: 60px;
     margin-right: 60px;
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .miniCardSelected {

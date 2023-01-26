@@ -1,16 +1,22 @@
 .miniCard {
     background-color: #8eff8e;
     width: 150px;
-    height: 50%;
+    height: 300px;
     box-shadow: rgba(0,0,0,0.403) 0px 10px 20px;
     text-align: center;
     border: 4px solid #4F4F4F;
-    margin: 60px;
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .miniCard img {
-    width: 150px;
-    height: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: auto;
+    max-width: 150px;
+    min-height: auto;
+    height: 200px;
+    border-radius: 10px;
 }
