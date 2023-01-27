@@ -6,6 +6,7 @@ import { Context } from '../contexts/Context'
 import PlantForm from './PlantForm'
 import "../css/ProfilePage.css"
 import "../css/HomePage.css"
+import EditUserForm from './EditUserForm'
 
 function ProfilePage() {
     const {
@@ -152,6 +153,9 @@ function ProfilePage() {
     function handleUserLikes(){
         return userLikes.map(post => <PostCard key={post.id + 1000000000} post={post} />)
     }
+    function handleUserInfo(){
+        return <EditUserForm currentUser={currentUser}/>
+    }
 
     // this function handles a display state variable that chooses between showing the users posts, comments, plants, and likes
     function handleDisplay(){
@@ -161,8 +165,10 @@ function ProfilePage() {
             return handleUserLikes()
         }else if (display === "comments"){
             return handleUserComments()
-        }else {
+        }else if (display === "plants") {
             return handleUserPlants()
+        }else {
+            return handleUserInfo()
         }
     }
 
@@ -178,6 +184,9 @@ function ProfilePage() {
     }
     function changeDispPlant(){
         setDisplay("plants")
+    }
+    function changeDispUser(){
+        setDisplay("user")
     }
     function handleClassName(){
         if (display === "posts" || display === "likes"){
@@ -203,6 +212,7 @@ function ProfilePage() {
             <button onClick={changeDispPost}>See Your Posts</button>
             <button onClick={changeDispComment}>See Your Comments</button>
             <button onClick={changeDispLike}>See Liked Posts</button>
+            <button onClick={changeDispUser}>Edit Profile</button>
         </div>
         <div className={handleClassName()}>
             {handleDisplay()}
